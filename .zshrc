@@ -1,6 +1,6 @@
 # oh my zsh settings
 ZSH_DISABLE_COMPFIX=true
-export ZSH="/Users/renanssilva/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 plugins=(git zsh-autosuggestions history-sync)
 source $ZSH/oh-my-zsh.sh
@@ -14,7 +14,10 @@ export PATH=$PATH:/usr/local/sbin
 
 
 # cargo
-source $HOME/.cargo/env
+if [[ -f $HOME/.cargo/env ]]
+then
+  source $HOME/.cargo/env
+fi
 
 
 # Env setup
@@ -35,9 +38,12 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # ruby stuff
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source $HOME/.rbenv/completions/rbenv.zsh
+if (( $+commands[rbenv] ))
+then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+  source $HOME/.rbenv/completions/rbenv.zsh
+fi
 
 
 # Starship prompt
