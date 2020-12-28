@@ -1,6 +1,6 @@
 # oh my zsh settings
 ZSH_DISABLE_COMPFIX=true
-export ZSH="/Users/renanssilva/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 plugins=(git zsh-autosuggestions history-sync)
 source $ZSH/oh-my-zsh.sh
@@ -14,7 +14,10 @@ export PATH=$PATH:/usr/local/sbin
 
 
 # cargo
-source $HOME/.cargo/env
+if [[ -f $HOME/.cargo/env ]]
+then
+  source $HOME/.cargo/env
+fi
 
 
 # Env setup
@@ -27,17 +30,27 @@ eval "$(pyenv virtualenv-init -)"
 eval "$(pipenv --completion)"
 export PATH="$HOME/.pyenv/shims:$PATH"
 
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export WORKON_HOME=$HOME/.virtualenvs
+pyenv virtualenvwrapper_lazy
+# This has a tendency to make the shell explode, somehow
+# source $(which virtualenvwrapper.sh)
+
 
 # node stuff
 export NVM_DIR="$HOME/.nvm"
+export N_PREFIX="$HOME/.n"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # ruby stuff
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source $HOME/.rbenv/completions/rbenv.zsh
+if (( $+commands[rbenv] ))
+then
+  eval "$(rbenv init -)"
+  source $HOME/.rbenv/completions/rbenv.zsh
+fi
 
 
 # Starship prompt
@@ -51,6 +64,7 @@ eval "$(starship init zsh)"
 # Aliases
 alias todo=~/personal-todo/todo.sh
 alias berta="time bundle exec ruby -Itest"
+alias pytest="pytest --pdbcls=IPython.core.debugger:Pdb -s"
 
 
 # dotfile syncing

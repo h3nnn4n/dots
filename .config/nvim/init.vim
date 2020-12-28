@@ -40,6 +40,7 @@ set listchars+=precedes:<         " The character to show in the last column whe
 
 set wildmenu
 
+set colorcolumn=80,120
 
 if !has('nvim')
   set mouse=a
@@ -68,6 +69,12 @@ Plug 'racer-rust/vim-racer'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/denite.nvim'
 
+Plug 'davidhalter/jedi-vim'
+Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tveskag/nvim-blame-line'
@@ -81,7 +88,6 @@ Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'stephpy/vim-yaml'
 
 Plug 'rhysd/vim-clang-format'
-
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-rails'
@@ -106,13 +112,13 @@ call plug#end()
 
 " Editor settings
 let g:loaded_python_provider = 0
-let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
+"let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
 
 
 " Gir blame settings
 nnoremap <silent> <leader>gb :ToggleBlameLine<CR>
 let g:blameLineVirtualTextPrefix = ' // '
-autocmd BufEnter * EnableBlameLine
+"autocmd BufEnter * EnableBlameLine
 
 
 " Theme settings
@@ -157,6 +163,8 @@ endif
 "nmap <Leader>F :call fzf#run({'sink': 'e', 'down': '40%'})<CR>
 "nmap <Leader>l :BLines<CR>
 "nmap <Leader>L :Lines<CR>
+
+nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 
 " fzf.vim is hanging
  nmap <Leader>f :GFiles<CR>
@@ -231,6 +239,14 @@ nmap <Leader>a/ :Tabularize //<CR>
 vmap <Leader>a/ :Tabularize //<CR>
 
 
+" Jedi 2
+" disable autocompletion, because we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+
 " RGBDS
 au BufRead,BufNewFile *.asm set filetype=rgbasm
 au BufRead,BufNewFile *.inc set filetype=rgbasm
@@ -243,3 +259,6 @@ set completeopt-=preview
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'

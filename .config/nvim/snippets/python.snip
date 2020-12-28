@@ -1,0 +1,20 @@
+snippet     ip
+abbr        import ipdb..
+        __import__('ipdb').set_trace(context=11)
+
+snippet     pprint
+abbr        pprint(...
+        __import__('pprint').pprint(${1})
+
+snippet     slack
+abbr        slack_function(..
+options     head
+        SLACK_ID = 'U01FZURU4C8'
+        from core.slack import slack_function
+        slack_function(
+                ${1:#:function},
+                args=[${2:#:args}],
+                kwargs={${3:#:kwargs}},
+                slack_id=SLACK_ID,
+                custom_tag='${4:custom_tag}',
+        )
