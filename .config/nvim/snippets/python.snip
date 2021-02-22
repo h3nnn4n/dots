@@ -18,3 +18,15 @@ options     head
                 slack_id=SLACK_ID,
                 custom_tag='${4:custom_tag}',
         )
+
+snippet     comp
+abbr        company = Company.objects.get
+options     head
+        company = Company.objects.get(id=${1})
+        cred = company.netsuite_credentials
+        print company
+        user = User.objects.get(email='renan@tesorio.com')
+        person = user.person
+        person.company_id = company.id
+        person
+        person.save()
