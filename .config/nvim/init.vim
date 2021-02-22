@@ -28,13 +28,16 @@ set backspace=indent,eol,start
 set cursorline
 set cursorcolumn
 
+set lazyredraw
+set undofile
+
 "" List chars
 set list
 set listchars=""                  " Reset the listchars
 set listchars+=tab:▸\             " a tab should display as "▸"
 set listchars+=trail:.            " show trailing spaces as dots
 "set listchars+=space:·            " show leading space as "·"
-set listchars+=eol:¬              " show end of line as "¬"
+"set listchars+=eol:¬              " show end of line as "¬"
 set listchars+=extends:>          " The character to show in the last column when wrap is off and the line goes beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is off and the line goes beyond the left of the screen
 
@@ -54,6 +57,8 @@ set timeout timeoutlen=1500
 
 " Plug stuff
 call plug#begin()
+Plug 'editorconfig/editorconfig-vim'
+
 Plug 'ryanoasis/vim-devicons'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'cespare/vim-toml'
@@ -64,13 +69,11 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'fszymanski/deoplete-emoji'
-"Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'racer-rust/vim-racer'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim'
-Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+"Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
@@ -87,6 +90,9 @@ Plug 'tpope/vim-rbenv', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'stephpy/vim-yaml'
 
+Plug 'mbbill/undotree'
+
+Plug 'vim-scripts/a.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
@@ -112,6 +118,7 @@ call plug#end()
 
 " Editor settings
 let g:loaded_python_provider = 0
+"let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
 "let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
 
 
