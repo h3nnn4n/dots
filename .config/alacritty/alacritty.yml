@@ -11,6 +11,9 @@ font:
     style: Regular
   size: 16.0
 
+bell:
+  enabled: false
+
 window:
   dimensions:
     columns: 120

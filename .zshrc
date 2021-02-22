@@ -65,6 +65,10 @@ eval "$(starship init zsh)"
 alias todo=~/personal-todo/todo.sh
 alias berta="time bundle exec ruby -Itest"
 alias pytest="pytest --pdbcls=IPython.core.debugger:Pdb -s"
+alias tls="tmux list-sessions"
+alias ta="tmux attach -t"
+alias tns="tmux new -s"
+alias t="tmux"
 
 
 # dotfile syncing

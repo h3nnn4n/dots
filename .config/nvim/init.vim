@@ -58,6 +58,7 @@ set timeout timeoutlen=1500
 " Plug stuff
 call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
+Plug 'embear/vim-localvimrc'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -221,6 +222,8 @@ let g:airline_powerline_fonts = 1
 
 " Uses C-n as shortcut for nerd tree
 map <C-n> :NERDTreeToggle<CR>
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+let NERDTreeRespectWildIgnore=1
 
 
 " Vim-indent
@@ -269,3 +272,5 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
+
+let $PYTHONPATH .= ';' . '/Users/renan-tesorio/.virtualenvs/Dashboard/lib/python2.7/site-packages/'
