@@ -32,12 +32,9 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=$HOME/.virtualenvs
-if (( $+commands[virtualenvwrapper_lazy] ))
-then
-  pyenv virtualenvwrapper_lazy
-  # This has a tendency to make the shell explode, somehow
-  # source $(which virtualenvwrapper.sh)
-fi
+pyenv virtualenvwrapper_lazy
+# This has a tendency to make the shell explode, somehow
+# source $(which virtualenvwrapper.sh)
 
 
 # node stuff
@@ -79,9 +76,3 @@ ZSH_HISTORY_FILE="${HOME}/.zsh_history"
 ZSH_HISTORY_PROJ="${HOME}/.zsh_history_sync"
 ZSH_HISTORY_FILE_ENC="${ZSH_HISTORY_PROJ}/zsh_history"
 GIT_COMMIT_MSG="latest $(date)"
-
-PATH="/Users/renanssilva/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/renanssilva/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/renanssilva/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/renanssilva/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/renanssilva/perl5"; export PERL_MM_OPT;
