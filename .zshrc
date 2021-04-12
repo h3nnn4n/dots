@@ -80,3 +80,6 @@ ZSH_HISTORY_FILE="${HOME}/.zsh_history"
 ZSH_HISTORY_PROJ="${HOME}/.zsh_history_sync"
 ZSH_HISTORY_FILE_ENC="${ZSH_HISTORY_PROJ}/zsh_history"
 GIT_COMMIT_MSG="latest $(date)"
+
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent

@@ -59,6 +59,9 @@ set timeout timeoutlen=1500
 call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
+Plug 'wellle/context.vim'
+"Plug 'nvim-treesitter/nvim-treesitter'
+"Plug 'romgrk/nvim-treesitter-context'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -274,3 +277,5 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
 let $PYTHONPATH .= ';' . '/Users/renan-tesorio/.virtualenvs/Dashboard/lib/python2.7/site-packages/'
+
+let g:context_enabled = 0
