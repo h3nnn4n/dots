@@ -77,7 +77,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim'
-"Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
