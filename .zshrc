@@ -32,7 +32,7 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=$HOME/.virtualenvs
-pyenv virtualenvwrapper_lazy
+# pyenv virtualenvwrapper_lazy
 # This has a tendency to make the shell explode, somehow
 # source $(which virtualenvwrapper.sh)
 
@@ -40,17 +40,17 @@ pyenv virtualenvwrapper_lazy
 # node stuff
 export NVM_DIR="$HOME/.nvm"
 export N_PREFIX="$HOME/.n"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 # ruby stuff
-export PATH="$HOME/.rbenv/bin:$PATH"
-if (( $+commands[rbenv] ))
-then
-  eval "$(rbenv init -)"
-  source $HOME/.rbenv/completions/rbenv.zsh
-fi
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#if (( $+commands[rbenv] ))
+#then
+  #eval "$(rbenv init -)"
+  #source $HOME/.rbenv/completions/rbenv.zsh
+#fi
 
 
 # Starship prompt
@@ -65,11 +65,16 @@ eval "$(starship init zsh)"
 alias todo=~/personal-todo/todo.sh
 alias berta="time bundle exec ruby -Itest"
 alias pytest="pytest --pdbcls=IPython.core.debugger:Pdb -s"
+
 alias tls="tmux list-sessions"
 alias ta="tmux attach -t"
 alias tns="tmux new -s"
 alias t="tmux"
 
+alias gc="git commit"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gap="git add --patch"
 
 # dotfile syncing
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -81,5 +86,7 @@ ZSH_HISTORY_PROJ="${HOME}/.zsh_history_sync"
 ZSH_HISTORY_FILE_ENC="${ZSH_HISTORY_PROJ}/zsh_history"
 GIT_COMMIT_MSG="latest $(date)"
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 gpgconf --launch gpg-agent
+gpgconf --kill gpg-agent
