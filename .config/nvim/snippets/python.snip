@@ -19,16 +19,67 @@ options     head
                 custom_tag='${4:custom_tag}',
         )
 
+snippet     slackp
+abbr        slack_function(..
+options     head
+        import threading
+
+        def pinger(quit):
+            from time import sleep
+            while True:
+                sleep(60)
+                print("ping")
+                if quit():
+                    return
+
+        stop_pinger = False
+        x = threading.Thread(target=pinger, args=(lambda: stop_pinger,))
+        x.start()
+
+        SLACK_ID = 'U01FZURU4C8'
+        from core.slack import slack_function
+        slack_function(
+                ${1:#:function},
+                args=[${2:#:args}],
+                kwargs={${3:#:kwargs}},
+                slack_id=SLACK_ID,
+                custom_tag='${4:custom_tag}',
+        )
+
+        stop_pinger = True
+        x.join()
+
+snippet     pinger
+abbr        import threa...
+options     head
+        import threading
+
+        def pinger(quit):
+            from time import sleep
+            while True:
+                sleep(1)
+                print("ping")
+                if quit():
+                    return
+
+        stop_pinger = False
+        x = threading.Thread(target=pinger, args=(lambda: stop_pinger,))
+        x.start()
+
+
+        stop_pinger = True
+        x.join()
+
 snippet     comp
 abbr        company = Company.objects.get
 options     head
         company = Company.objects.get(id=${1})
         cred = company.all_integrations[0]
-        print company
+        print(company)
         user = User.objects.get(email='renan@tesorio.com')
         person = user.person
         person.company_id = company.id
-        print person.id, person.user.email
+        print(person.id, person.user.email)
         person.save()
 
 snippet     compn
