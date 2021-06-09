@@ -18,6 +18,7 @@ export EDITOR='nvim'
 
 
 # Load other settings
+# Based of: https://lobste.rs/s/r1tpld/your_bashrc_doesn_t_have_be_mess
 export ZSHRC_D=$HOME/.config/zshrc.d
 [[ -r ${ZSHRC_D}/bootstrap ]] && . ${ZSHRC_D}/bootstrap
 
