@@ -7,7 +7,9 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=$HOME/.virtualenvs
 
-pyenv virtualenvwrapper_lazy
+if [[ -a virtualenvwrapper_lazy ]]; then
+  pyenv virtualenvwrapper_lazy
+fi
 
 # This has a tendency to make the shell explode, somehow
 # source $(which virtualenvwrapper.sh)
