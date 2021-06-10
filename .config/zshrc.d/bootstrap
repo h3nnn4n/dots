@@ -1,4 +1,11 @@
 for file in ${ZSHRC_D}/*.sh; do
+  T_START=$(current_time)
   [[ -r $file ]] && . $file
+  T_END=$(current_time)
+
+  ((T_TIME=$T_END - $T_START))
+  echo $T_TIME $file >> "${BENCH_RESULTS}"
 done
+
+unset T_END
 unset file
