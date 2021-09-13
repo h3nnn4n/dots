@@ -117,6 +117,8 @@ Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'w0rp/ale'
+
+Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
 
