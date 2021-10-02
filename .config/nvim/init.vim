@@ -63,6 +63,8 @@ Plug 'wellle/context.vim'
 "Plug 'nvim-treesitter/nvim-treesitter'
 "Plug 'romgrk/nvim-treesitter-context'
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'ryanoasis/vim-devicons'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'cespare/vim-toml'
@@ -77,6 +79,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim'
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 Plug 'Konfekt/FastFold'
@@ -120,12 +123,6 @@ Plug 'w0rp/ale'
 
 Plug 'nathangrigg/vim-beancount'
 call plug#end()
-
-
-" Editor settings
-let g:loaded_python_provider = 0
-"let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
-"let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
 
 
 " Gir blame settings
@@ -214,6 +211,31 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+" Gutentags
+let g:gutentags_cache_dir = expand('~/.cache/nvim/ctags/')
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['.git']
+
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+
+"let g:gutentags_ctags_extra_args = [
+      "\ '--tag-relative=yes',
+      "\ '--fields=+ailmnS',
+      "\ ]
+
+"let g:gutentags_ctags_exclude = [
+      "\ '*.git', '*.svg', '*.hg',
+      "\ '*/node_modules/*',
+      "\ 'node_modules/*',
+      "\ ]
+
+set statusline+=%{gutentags#statusline()} " Doesnt work?
 
 " UltiSnips
 "let g:UltiSnipsExpandTrigger="<leader>q"
@@ -263,14 +285,6 @@ nmap <Leader>a/ :Tabularize //<CR>
 vmap <Leader>a/ :Tabularize //<CR>
 
 
-" Jedi 2
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
-
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
-
-
 " RGBDS
 au BufRead,BufNewFile *.asm set filetype=rgbasm
 au BufRead,BufNewFile *.inc set filetype=rgbasm
@@ -290,9 +304,44 @@ imap <F2> :ContextPeek<CR>
 smap <F2> :ContextPeek<CR>
 xmap <F2> :ContextPeek<CR>
 
+
+" Snippets
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
+let g:context_enabled = 0
+
+
+" Python stuff
+let g:loaded_python_provider = 0
+"let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
+"let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
+
 let $PYTHONPATH .= ';' . '/Users/renan-tesorio/.virtualenvs/Dashboard/lib/python2.7/site-packages/'
 
-let g:context_enabled = 0
+" Black
+nnoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
+inoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
+
+" Isort
+nnoremap <buffer><silent> <leader>i :Isort<cr>
+inoremap <buffer><silent> <leader>i :Isort<cr>
+
+let g:black#settings = {
+    \ 'fast': 1
+\}
+
+" Jedi 2
+" disable autocompletion, because we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+autocmd FileType sql call SqlFormatter()
+"augroup end
+function SqlFormatter()
+    set noai
+    " set mappings...
+    map <leader>pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+  endfunction

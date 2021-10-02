@@ -93,3 +93,16 @@ options     head
         person.company_id = company.id
         print person.id, person.user.email
         person.save()
+
+snippet     pstart
+abbr        from pyinstrument import Profiler
+options     head
+        from pyinstrument import Profiler
+        profiler = Profiler()
+        profiler.start()
+
+snippet     pend
+abbr        profiler.stop()
+options     head
+        profiler.stop()
+        profiler.open_in_browser()
