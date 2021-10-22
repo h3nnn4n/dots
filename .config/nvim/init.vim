@@ -78,6 +78,7 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
@@ -126,6 +127,7 @@ call plug#end()
 let g:loaded_python_provider = 0
 "let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
 "let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
+let g:python3_host_prog = '/home/h3nnn4n/.pyenv/shims/python3'
 
 
 " Gir blame settings
