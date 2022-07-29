@@ -3,7 +3,7 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 eval "$(pipenv --completion)"
 
 # export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
