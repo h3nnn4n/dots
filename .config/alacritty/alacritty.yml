@@ -9,7 +9,7 @@ font:
     #family: 'Sauce Code Pro Nerd Font Complete Mono'
     family: 'CaskaydiaCove Nerd Font'
     style: Regular
-  size: 22.0
+  size: 16.0
 
 bell:
   enabled: false
