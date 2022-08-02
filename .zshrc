@@ -22,8 +22,8 @@ ZSH_THEME="af-magic"
 plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
 
 
 
