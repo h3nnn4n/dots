@@ -4,7 +4,7 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 
 eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
-eval "$(pipenv --completion)"
+# eval "$(pipenv --completion)"
 
 # export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=$HOME/.virtualenvs
