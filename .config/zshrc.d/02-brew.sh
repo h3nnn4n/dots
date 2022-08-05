@@ -1,1 +1,1 @@
-eval "$(homebrew/bin/brew shellenv)"
+eval "${HOME}/$(homebrew/bin/brew shellenv)"
