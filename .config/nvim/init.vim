@@ -122,6 +122,10 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'w0rp/ale'
 
 Plug 'nathangrigg/vim-beancount'
+
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
 call plug#end()
 
 
