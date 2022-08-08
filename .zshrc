@@ -19,7 +19,8 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 
 # Zsh plugins
-plugins=(git zsh-autosuggestions)
+# For fzf-zsh-plugin: git clone https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+plugins=(git zsh-autosuggestions fzf-zsh-plugin)
 
 source $ZSH/oh-my-zsh.sh
 # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
