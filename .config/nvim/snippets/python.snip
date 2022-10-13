@@ -1,22 +1,22 @@
 snippet     ip
 abbr        import ipdb..
-        __import__('ipdb').set_trace(context=11)
+        __import__("ipdb").set_trace(context=11)
 
 snippet     pp
 abbr        pprint(...
-        __import__('pprint').pprint(${1})
+        __import__("pprint").pprint(${1})
 
 snippet     slack
 abbr        slack_function(..
 options     head
-        SLACK_ID = 'U01FZURU4C8'
+        SLACK_ID = "U01FZURU4C8"
         from core.slack import slack_function
         slack_function(
                 ${1:#:function},
                 args=[${2:#:args}],
                 kwargs={${3:#:kwargs}},
                 slack_id=SLACK_ID,
-                custom_tag='${4:custom_tag}',
+                custom_tag="${4:custom_tag}",
         )
 
 snippet     slackp
@@ -36,14 +36,14 @@ options     head
         x = threading.Thread(target=pinger, args=(lambda: stop_pinger,))
         x.start()
 
-        SLACK_ID = 'U01FZURU4C8'
+        SLACK_ID = "U01FZURU4C8"
         from core.slack import slack_function
         slack_function(
                 ${1:#:function},
                 args=[${2:#:args}],
                 kwargs={${3:#:kwargs}},
                 slack_id=SLACK_ID,
-                custom_tag='${4:custom_tag}',
+                custom_tag="${4:custom_tag}",
         )
 
         stop_pinger = True
@@ -76,7 +76,7 @@ options     head
         company = Company.objects.get(id=${1})
         cred = company.all_integrations[0]
         print(company)
-        user = User.objects.get(email='renan@tesorio.com')
+        user = User.objects.get(email="renan@tesorio.com")
         person = user.person
         person.company_id = company.id
         print(person.id, person.user.email)
@@ -85,10 +85,10 @@ options     head
 snippet     compn
 abbr        company = Company.objects.get(name__icon...
 options     head
-        company = Company.objects.get(name__icontains='${1}')
+        company = Company.objects.get(name__icontains="${1}")
         cred = company.all_integrations[0]
         print company
-        user = User.objects.get(email='renan@tesorio.com')
+        user = User.objects.get(email="renan@tesorio.com")
         person = user.person
         person.company_id = company.id
         print person.id, person.user.email
