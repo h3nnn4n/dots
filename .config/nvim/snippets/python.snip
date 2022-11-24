@@ -106,3 +106,10 @@ abbr        profiler.stop()
 options     head
         profiler.stop()
         profiler.open_in_browser()
+
+snippet     logger
+abbr        logger = logging.getLogger...
+options     head
+        import logging
+
+        logger = logging.getLogger(__name__)
