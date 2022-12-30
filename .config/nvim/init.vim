@@ -349,3 +349,8 @@ function SqlFormatter()
     " set mappings...
     map <leader>pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
   endfunction
+
+
+
+"" Refresh nerdtree with `<leader>r`
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
