@@ -354,3 +354,7 @@ function SqlFormatter()
 
 "" Refresh nerdtree with `<leader>r`
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+
+
+"" Make Q repeat the last macro instead of Ex mode
+nnoremap Q @@
