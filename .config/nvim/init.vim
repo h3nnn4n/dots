@@ -72,7 +72,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'fszymanski/deoplete-emoji'
 Plug 'racer-rust/vim-racer'
 Plug 'Shougo/denite.nvim'
 
