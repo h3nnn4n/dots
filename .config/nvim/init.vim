@@ -126,6 +126,8 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
+
+Plug 'github/copilot.vim'
 call plug#end()
 
 
