@@ -4,6 +4,8 @@ alias berta="time bundle exec ruby -Itest"
 alias pytest="pytest --pdbcls=IPython.core.debugger:Pdb -s"
 
 # Git stuff
+alias gl="git log --pretty=oneline --color | head -n15"
+alias gs="git status"
 alias gc="git commit"
 alias gd="git diff"
 alias gdc="git diff --cached"
