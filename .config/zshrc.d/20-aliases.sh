@@ -26,3 +26,6 @@ tns () {
   tmux new-window -d -n fettucinni           && \
   tmux attach-session -d -t "${SessionName}"
 }
+
+unset d
+alias d="say 'Done'"
