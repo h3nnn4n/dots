@@ -20,9 +20,9 @@ alias t="tmux"
 
 tns () {
   SessionName=$1
-  tmux new-session -d -s ${SessionName}    && \
-  tmux rename-window nvim                  && \
-  tmux new-window -d -n raviolli           && \
-  tmux new-window -d -n fettucinni         && \
-  tmux attach-session -d -t ${SessionName}
+  tmux new-session -d -s "${SessionName}"    && \
+  tmux rename-window nvim                    && \
+  tmux new-window -d -n raviolli             && \
+  tmux new-window -d -n fettucinni           && \
+  tmux attach-session -d -t "${SessionName}"
 }
