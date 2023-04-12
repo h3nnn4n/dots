@@ -29,5 +29,6 @@ tns () {
   tmux attach-session -d -t "${SessionName}"
 }
 
+# Random utils
 unset d
 alias d="say 'Done'"
