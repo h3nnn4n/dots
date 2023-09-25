@@ -119,6 +119,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kien/rainbow_parentheses.vim'
+
+Plug 'neovim/nvim-lspconfig'
 Plug 'w0rp/ale'
 
 Plug 'nathangrigg/vim-beancount'
@@ -131,7 +133,7 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 
-" Gir blame settings
+" Git blame settings
 nnoremap <silent> <leader>gb :ToggleBlameLine<CR>
 let g:blameLineVirtualTextPrefix = ' // '
 "autocmd BufEnter * EnableBlameLine
@@ -149,7 +151,16 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 
 " ALE
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['pylint']}
+let g:ale_linters = { 'python': ['pyright', 'bandit', 'flake8'] }
+
+let g:ale_python_auto_poetry = 1
+
+"let g:ale_python_flake8_executable = 'poetry run flake8'
+"let g:ale_python_bandit_executable = 'poetry run bandit'
+"let g:ale_python_pyright_executable = 'poetry run pyright'
+
+"let g:ale_python_pyright_auto_poetry = 1
+"let g:ale_python_flake8_auto_poetry = 1
 
 
 " Rainbow parentheses
@@ -323,8 +334,6 @@ let g:loaded_python_provider = 0
 "let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
 "let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
 
-let $PYTHONPATH .= ';' . '/Users/renan-tesorio/.virtualenvs/Dashboard/lib/python2.7/site-packages/'
-
 " Black
 nnoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
 inoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
@@ -345,12 +354,11 @@ let g:jedi#completions_enabled = 0
 let g:jedi#use_splits_not_buffers = "right"
 
 autocmd FileType sql call SqlFormatter()
-"augroup end
+
 function SqlFormatter()
-    set noai
-    " set mappings...
-    map <leader>pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
-  endfunction
+  set noai
+  map <leader>pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+endfunction
 
 
 
@@ -360,3 +368,13 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
 "" Make Q repeat the last macro instead of Ex mode
 nnoremap Q @@
+
+
+" -------------------- LSP --------------------
+"  Taken from:
+"  https://gist.github.com/mengwangk/570a6ceb8cd14e55f4d89ac865850418#file-init-vim-L102
+lua require('lsp')
+
+" Completion
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" -------------------- LSP --------------------
