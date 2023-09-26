@@ -133,6 +133,12 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 
+" Neovim providers setup
+let g:loaded_python_provider = 1
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+
+
 " Git blame settings
 nnoremap <silent> <leader>gb :ToggleBlameLine<CR>
 let g:blameLineVirtualTextPrefix = ' // '
@@ -330,7 +336,6 @@ let g:context_enabled = 0
 
 
 " Python stuff
-let g:loaded_python_provider = 0
 "let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
 "let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
 
