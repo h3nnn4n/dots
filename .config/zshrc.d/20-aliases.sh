@@ -24,8 +24,8 @@ tns () {
   SessionName=$1
   tmux new-session -d -s "${SessionName}"    && \
   tmux rename-window nvim                    && \
-  tmux new-window -d -n raviolli             && \
-  tmux new-window -d -n fettucinni           && \
+  tmux new-window -d -n ravioli              && \
+  tmux new-window -d -n fettuccine           && \
   tmux attach-session -d -t "${SessionName}"
 }
 
