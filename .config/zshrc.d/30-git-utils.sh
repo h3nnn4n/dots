@@ -1,4 +1,4 @@
-unalias gb
+#declare gb > /dev/null && unalias gb
 
 
 function is_in_git_repo() {

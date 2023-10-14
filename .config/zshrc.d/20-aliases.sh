@@ -1,3 +1,5 @@
+unset gs
+unset gl
 
 # Utils
 alias todo=~/personal-todo/todo.sh
@@ -11,8 +13,10 @@ alias tns="tmux new -s"
 alias t="tmux"
 
 # Git stuff
+alias gl="git log --pretty=oneline | head -n10"
 alias gc="git commit"
 alias gd="git diff"
+alias gs="git status"
 alias gdc="git diff --cached"
 alias gap="git add --patch"
 alias gcan="git commit --amend --no-edit"
