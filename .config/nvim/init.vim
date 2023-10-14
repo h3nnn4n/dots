@@ -79,6 +79,7 @@ Plug 'Shougo/denite.nvim'
 Plug 'davidhalter/jedi-vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
