@@ -1,7 +1,7 @@
 set t_Co=256
 
 
-" Basic vim settings
+" -------------------- vim stuff --------------------
 set number
 set linebreak
 set nowrap
@@ -55,7 +55,7 @@ let mapleader=","
 set timeout timeoutlen=1500
 
 
-" Plug stuff
+" -------------------- Plugin setup --------------------
 call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
@@ -76,6 +76,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'Shougo/denite.nvim'
 
 Plug 'davidhalter/jedi-vim'
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'a-vrma/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -84,7 +85,6 @@ Plug 'tmhedberg/SimpylFold'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'tveskag/nvim-blame-line'
 
 Plug 'vim-scripts/django.vim'
 
@@ -116,50 +116,47 @@ Plug 'junegunn/fzf.vim'
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'kien/rainbow_parentheses.vim'
+
+Plug 'neovim/nvim-lspconfig'
 Plug 'w0rp/ale'
 
 Plug 'nathangrigg/vim-beancount'
 
 Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+
+Plug 'github/copilot.vim'
 call plug#end()
 
 
-" Editor settings
-let g:loaded_python_provider = 0
-"let g:python_host_prog = '/Users/renanssilva/.pyenv/shims/python2'
-"let g:python3_host_prog = '/Users/renanssilva/.pyenv/shims/python3'
-let g:python3_host_prog = '/home/h3nnn4n/.pyenv/shims/python3'
+" -------------------- Providers --------------------
+let g:loaded_python_provider = 1
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
 
 
-" Gir blame settings
-nnoremap <silent> <leader>gb :ToggleBlameLine<CR>
-let g:blameLineVirtualTextPrefix = ' // '
-"autocmd BufEnter * EnableBlameLine
+" -------------------- ALE --------------------
+let g:ale_linters = { 'python': ['pyright', 'bandit', 'flake8'] }
+
+let g:ale_python_auto_poetry = 1
+
+"let g:ale_python_flake8_executable = 'poetry run flake8'
+"let g:ale_python_bandit_executable = 'poetry run bandit'
+"let g:ale_python_pyright_executable = 'poetry run pyright'
+
+"let g:ale_python_pyright_auto_poetry = 1
+"let g:ale_python_flake8_auto_poetry = 1
 
 
-" Theme settings
-let g:gruvbox_italic=1
-let g:gruvbox_contrast_dark='hard'
-syntax on
-colorscheme gruvbox
-set background=dark
-filetype plugin indent on
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-
-" ALE
-let b:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['pylint']}
-
-
-" Rainbow parentheses
+" -------------------- Rainbow Parentheses --------------------
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 
-"" FZF STUFF
+" -------------------- FZF --------------------
 " Not sure if the manual path update is required with vim-plug
 "set rtp+=/usr/local/opt/fzf " for osx, with homebrew
 "set rtp+=~/.fzf  " For linux, with git
@@ -191,18 +188,7 @@ nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 nmap <Leader>/ :Rg<Space>
 
 
-" stop using arrow keys!
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
-
-"vim-easymotion
+" -------------------- EasyMotion --------------------
 let g:EasyMotion_smartcase = 1
 map <leader><leader>c <plug>(easymotion-s2)
 
@@ -212,32 +198,27 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 
-" airline
+" -------------------- Theme --------------------
+" Theme settings
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='hard'
+syntax on
+colorscheme gruvbox
+set background=dark
+filetype plugin indent on
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 
-" UltiSnips
-"let g:UltiSnipsExpandTrigger="<leader>q"
-"let g:UltiSnipsJumpForwardTrigger="<c-j>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"let g:UltiSnipsSnippetsDir="/Users/renanssilva/.config/nvim/plugged/vim-snippets/UltiSnips"
-"let g:UltiSnipsSnippetDirectories=["UltiSnips", "/Users/renanssilva/.config/nvim/plugged/vim-snippets/"]
-"let g:UltiSnipsEditSplit="vertical"
-"let g:UltiSnipsListSnippets="<leader>w"
-
-
-" Uses C-n as shortcut for nerd tree
-map <C-n> :NERDTreeToggle<CR>
-set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
-let NERDTreeRespectWildIgnore=1
-
-
-" Vim-indent
+" -------------------- Vim-indent --------------------
 let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size  = 1
 
+
+" -------------------- Tabularize --------------------
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
@@ -266,20 +247,12 @@ nmap <Leader>a/ :Tabularize //<CR>
 vmap <Leader>a/ :Tabularize //<CR>
 
 
-" Jedi 2
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
-
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
-
-
-" RGBDS
+" -------------------- Assembly --------------------
 au BufRead,BufNewFile *.asm set filetype=rgbasm
 au BufRead,BufNewFile *.inc set filetype=rgbasm
 
 
-" Deoplete
+" -------------------- Deoplete --------------------
 let g:deoplete#enable_at_startup = 1
 set completeopt-=preview
 
@@ -293,9 +266,77 @@ imap <F2> :ContextPeek<CR>
 smap <F2> :ContextPeek<CR>
 xmap <F2> :ContextPeek<CR>
 
+
+" -------------------- Snippets --------------------
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
-let $PYTHONPATH .= ';' . '/Users/renan-tesorio/.virtualenvs/Dashboard/lib/python2.7/site-packages/'
-
 let g:context_enabled = 0
+
+
+" -------------------- Python Stuff --------------------
+" Black
+nnoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
+inoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
+
+
+" Isort
+nnoremap <buffer><silent> <leader>i :Isort<cr>
+inoremap <buffer><silent> <leader>i :Isort<cr>
+
+let g:black#settings = {
+    \ 'fast': 1
+\}
+
+
+" Jedi
+" disable autocompletion, because we use deoplete for completion
+let g:jedi#completions_enabled = 0
+
+" open the go-to function in split, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
+
+" -------------------- SQL --------------------
+" Simple SQL Formatter
+autocmd FileType sql call SqlFormatter()
+
+function SqlFormatter()
+  set noai
+  map <leader>pt  :%!sqlformat --reindent --keywords upper --identifiers lower -<CR>
+endfunction
+
+
+" -------------------- NerdTree --------------------
+" Uses C-n as shortcut for nerd tree
+map <C-n> :NERDTreeToggle<CR>
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+let NERDTreeRespectWildIgnore=1
+
+"" Refresh nerdtree with `<leader>r`
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+
+
+" -------------------- LSP --------------------
+"  Taken from:
+"  https://gist.github.com/mengwangk/570a6ceb8cd14e55f4d89ac865850418#file-init-vim-L102
+lua require('lsp')
+
+" Completion
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+
+" -------------------- Custom Stuff --------------------
+"" Make Q repeat the last macro instead of Ex mode
+nnoremap Q @@
+
+
+" stop using arrow keys!
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
