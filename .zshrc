@@ -11,6 +11,7 @@ BENCH_RESULTS=$HOME/.zshrc_benchmarks
 touch "${BENCH_RESULTS}"
 printf "" > "${BENCH_RESULTS}"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ZSH_DISABLE_COMPFIX=true
 
