@@ -3,21 +3,9 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(pipenv --completion)"
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 
 eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-# eval "$(pipenv --completion)"
-
-# export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
-# export WORKON_HOME=$HOME/.virtualenvs
-
-# pyenv virtualenvwrapper_lazy
-
-# This has a tendency to make the shell explode, somehow
-# source $(which virtualenvwrapper.sh)
