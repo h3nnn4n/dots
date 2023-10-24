@@ -19,6 +19,8 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="af-magic"
 
 source $ZSH/oh-my-zsh.sh
+
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Zsh plugins
