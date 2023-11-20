@@ -4,32 +4,24 @@ env:
 # Font
 font:
   normal:
-    #family: 'Cascadia Code PL'
-    #style: SemiLight
-    #family: 'Sauce Code Pro Nerd Font Complete Mono'
     family: 'CaskaydiaCove Nerd Font'
     style: Regular
-  size: 16.0
+  size: 10.0
 
 bell:
   enabled: false
 
 window:
   dimensions:
-    columns: 120
-    lines: 35
-  decorations: "buttonless"
-  #decorations: "none"
-  #decorations: "transparent"
+    columns: 110
+    lines: 30
+  decorations: "none"
 
 # Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
     background: '#1d2021'
-    #background: '#282828'
-    # soft contrast: background = '#32302f'
     foreground: '#ebdbb2'
 
   # Normal colors
@@ -61,10 +53,3 @@ colors:
     - { index: 19, color: '0x6e6b5e' }
     - { index: 20, color: '0x999580' }
     - { index: 21, color: '0xe8e4cf' }
-
-# Key bindings
-key_bindings:
-  - { key: Key0,     mods: Control,       action: ResetFontSize    }
-  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
-  - { key: Return,   mods: Alt,           action: ToggleFullscreen }
