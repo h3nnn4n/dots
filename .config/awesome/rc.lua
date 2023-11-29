@@ -55,7 +55,7 @@ beautiful.init("/home/h3nnn4n/.config/awesome/theme.lua")
 --terminal = "urxvt"
 --terminal = "kitty"
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "nvim"
+editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -98,37 +98,6 @@ local weather = lain.widget.weather({
         widget:set_markup(markup.fontfg(beautiful.font, "#eca4c4", descr .. " @ " .. units .. "°C "))
     end
 })
-
-
--- IP
-local ip_widget = wibox.widget.textbox()
-
-local function updateIpWidget()
-    awful.spawn.easy_async("curl --silent http://whatismyip.akamai.com/", function(stdout)
-        local ip = stdout or "N/A"
-        ip_widget:set_text(ip)
-    end)
-  end
-
-updateIpWidget()
-awful.widget.watch(updateIpWidget, 60, ip_widget)
-
-
--- FS
-local disk_read_widget = lain.widget.fs({
-    notification_preset = { fg = "#FFCC00", bg = "#3F3F3F", font = "Monospace 10" },
-    settings = function()
-        widget:set_text(fs_now["/"].percentage)
-    end
-})
-
-local disk_write_widget = lain.widget.fs({
-    notification_preset = { fg = "#FFCC00", bg = "#3F3F3F", font = "Monospace 10" },
-    settings = function()
-        widget:set_text(fs_now["/"].percentage)
-    end
-})
-
 
 -- Net
 local netdownicon = wibox.widget.imagebox(beautiful.widget_netdown)
@@ -182,7 +151,7 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "terminal", terminal },
+                                    { "open terminal", terminal },
                                     { "pcmanfm", "pcmanfm" },
                                     { "firefox", "firefox" },
                                     { "telegram", "telegram" },
@@ -305,13 +274,10 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- disk_read_widget.widget,
-            -- disk_write_widget.widget,
             netdownicon,
             netdowninfo,
             netupicon,
             netupinfo.widget,
-            ip_widget,
             memicon,
             memory.widget,
             cpuicon,
@@ -339,11 +305,9 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
-    -- Switch focus between windows in the same screen
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -356,6 +320,20 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
+    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+              {description = "show main menu", group = "awesome"}),
+
+    -- Layout manipulation
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+              {description = "swap with next client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+              {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+              {description = "focus the previous screen", group = "screen"}),
+    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+              {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -365,38 +343,17 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}),
 
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
-
-    -- Switch focus between screens
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
-
-    -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
-              {description = "swap with next client by index", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
-              {description = "swap with previous client by index", group = "client"}),
-
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
-              {description = "jump to urgent client", group = "client"}),
-
     -- Standard program
+    awful.key({ "Control", "Alt"  }, "Return", function () awful.spawn("dlauncher-toggle") end,
+              {description = "Opens DLauncher", group = "launcher"}),
     awful.key({ modkey,           }, "F2", function () awful.spawn("dlauncher-toggle") end,
               {description = "Opens DLauncher", group = "launcher"}),
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
-
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ }, "Print", function () awful.spawn("flameshot gui") end,
-              {description = "take a screenshot with flameshot", group = "launcher"}),
-    awful.key({ modkey, "Shift" }, "s", function () awful.spawn("flameshot gui") end,
-              {description = "take a screenshot with flameshot", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -441,7 +398,6 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
-
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
@@ -610,6 +566,10 @@ awful.rules.rules = {
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
     },
+
+    -- Set Firefox to always map on the tag named "2" on screen 1.
+    -- { rule = { class = "Firefox" },
+    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -677,19 +637,14 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Commands to run on startup
 do
   local cmds =
   {
-    "blueman-manager",
-    "nm-applet",
-    "pasystray",
     "xcompmgr",
     "flameshot",
     "nm-applet",
     "1password --silent",
-    "dlauncher",
-    "xrandr --output DP-4 --primary"
+    "dlauncher"
   }
 
   for _, cmd in pairs(cmds) do
