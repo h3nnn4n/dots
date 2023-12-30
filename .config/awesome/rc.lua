@@ -640,6 +640,8 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 do
   local cmds =
   {
+    "nm-applet",
+    "pasystray",
     "xcompmgr",
     "flameshot",
     "nm-applet",
