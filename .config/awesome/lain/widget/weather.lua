@@ -21,27 +21,26 @@ local tonumber = tonumber
 -- lain.widget.weather
 
 local function factory(args)
-    local weather               = { widget = wibox.widget.textbox() }
-    local args                  = args or {}
-    local APPID                 = args.APPID or "3e321f9414eaedbfab34983bda77a66e" -- lain's default
-    local timeout               = args.timeout or 60 * 15 -- 15 min
-    local timeout_forecast      = args.timeout or 60 * 60 * 24 -- 24 hrs
-    local current_call          = args.current_call  or "curl -s 'http://api.openweathermap.org/data/2.5/weather?id=%s&units=%s&lang=%s&APPID=%s'"
-    local forecast_call         = args.forecast_call or "curl -s 'http://api.openweathermap.org/data/2.5/forecast/daily?id=%s&units=%s&lang=%s&cnt=%s&APPID=%s'"
-    local city_id               = args.city_id or 0 -- placeholder
+    args                        = args or {}
+
+    local weather               = { widget = args.widget or wibox.widget.textbox() }
+    local APPID                 = args.APPID -- mandatory api key
+    local timeout               = args.timeout or 900 -- 15 min
+    local current_call          = args.current_call  or "curl -s 'https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&APPID=%s&units=%s&lang=%s'"
+    local forecast_call         = args.forecast_call or "curl -s 'https://api.openweathermap.org/data/2.5/forecast?lat=%s&lon=%s&APPID=%s&cnt=%s&units=%s&lang=%s'"
+    local lat                   = args.lat or 0 -- placeholder
+    local lon                   = args.lon or 0 -- placeholder
     local units                 = args.units or "metric"
     local lang                  = args.lang or "en"
     local cnt                   = args.cnt or 5
-    local date_cmd              = args.date_cmd or "date -u -d @%d +'%%a %%d'"
     local icons_path            = args.icons_path or helpers.icons_dir .. "openweathermap/"
     local notification_preset   = args.notification_preset or {}
     local notification_text_fun = args.notification_text_fun or
                                   function (wn)
                                       local day = os.date("%a %d", wn["dt"])
-                                      local tmin = math.floor(wn["temp"]["min"])
-                                      local tmax = math.floor(wn["temp"]["max"])
+                                      local temp = math.floor(wn["main"]["temp"])
                                       local desc = wn["weather"][1]["description"]
-                                      return string.format("<b>%s</b>: %s, %d - %d ", day, desc, tmin, tmax)
+                                      return string.format("<b>%s</b>: %s, %d ", day, desc, temp)
                                   end
     local weather_na_markup     = args.weather_na_markup or " N/A "
     local followtag             = args.followtag or false
@@ -68,7 +67,7 @@ local function factory(args)
             preset  = notification_preset,
             text    = weather.notification_text,
             icon    = weather.icon_path,
-            timeout = type(seconds == "number") and seconds or notification_preset.timeout
+            timeout = type(seconds) == "number" and seconds or notification_preset.timeout
         }
     end
 
@@ -89,14 +88,15 @@ local function factory(args)
     end
 
     function weather.forecast_update()
-        local cmd = string.format(forecast_call, city_id, units, lang, cnt, APPID)
+        local cmd = string.format(forecast_call, lat, lon, APPID, cnt, units, lang)
+
         helpers.async(cmd, function(f)
-            local pos, err
-            weather_now, pos, err = json.decode(f, 1, nil)
+            local err
+            weather_now, _, err = json.decode(f, 1, nil)
 
             if not err and type(weather_now) == "table" and tonumber(weather_now["cod"]) == 200 then
                 weather.notification_text = ""
-                for i = 1, weather_now["cnt"] do
+                for i = 1, weather_now["cnt"], math.floor(weather_now["cnt"] / cnt) do
                     weather.notification_text = weather.notification_text ..
                                                 notification_text_fun(weather_now["list"][i])
                     if i < weather_now["cnt"] then
@@ -108,10 +108,11 @@ local function factory(args)
     end
 
     function weather.update()
-        local cmd = string.format(current_call, city_id, units, lang, APPID)
+        local cmd = string.format(current_call, lat, lon, APPID, units, lang)
+
         helpers.async(cmd, function(f)
-            local pos, err, icon
-            weather_now, pos, err = json.decode(f, 1, nil)
+            local err
+            weather_now, _, err = json.decode(f, 1, nil)
 
             if not err and type(weather_now) == "table" and tonumber(weather_now["cod"]) == 200 then
                 local sunrise = tonumber(weather_now["sys"]["sunrise"])
@@ -139,8 +140,8 @@ local function factory(args)
 
     if showpopup == "on" then weather.attach(weather.widget) end
 
-    weather.timer = helpers.newtimer("weather-" .. city_id, timeout, weather.update, false, true)
-    weather.timer_forecast = helpers.newtimer("weather_forecast-" .. city_id, timeout, weather.forecast_update, false, true)
+    weather.timer = helpers.newtimer("weather-" .. lat .. ":" .. lon, timeout, weather.update, false, true)
+    weather.timer_forecast = helpers.newtimer("weather_forecast-" .. lat .. ":" .. lon, timeout, weather.forecast_update, false, true)
 
     return weather
 end
