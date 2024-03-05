@@ -186,17 +186,9 @@ local bat = lain.widget.bat({
     end
 })
 
--- ALSA volume
+-- Audio volume
 local volicon = wibox.widget.imagebox(theme.widget_vol)
-theme.volume = lain.widget.alsa({
-    settings = function()
-        if volume_now.status == "off" then
-            volume_now.level = volume_now.level .. "M"
-        end
-
-        widget:set_markup(markup.fontfg(theme.font, "#7493d2", volume_now.level .. "% "))
-    end
-})
+theme.volume = lain.widget.pulsebar()
 
 -- Net
 local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
@@ -222,6 +214,10 @@ local memory = lain.widget.mem({
         widget:set_markup(markup.fontfg(theme.font, "#e0da37", mem_now.used .. "M "))
     end
 })
+
+-- Max CPU Frequency
+local cpu_max_freq = wibox.widget.textbox()
+cpu_max_freq = "hi mom"
 
 -- MPD
 local mpdicon = wibox.widget.imagebox()
@@ -303,6 +299,7 @@ function theme.at_screen_connect(s)
             wibox.widget.systray(),
             --mailicon,
             --theme.mail.widget,
+            cpu_max_freq,
             netdownicon,
             netdowninfo,
             netupicon,
