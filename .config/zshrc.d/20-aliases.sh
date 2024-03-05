@@ -1,5 +1,10 @@
 unset gs
 unset gl
+unset ll
+unset la
+
+alias ll="ls -lhrts"
+alias la="ls -lharts"
 
 # Utils
 alias todo=~/personal-todo/todo.sh
@@ -14,6 +19,7 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 alias gap="git add --patch"
 alias gcan="git commit --amend --no-edit"
+alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
 
 # dotfile syncing
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -22,6 +28,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tls="tmux list-sessions"
 alias ta="tmux attach -t"
 alias t="tmux"
+alias tks="tmux kill-session"
 
 tns () {
   SessionName=$1
@@ -35,3 +42,5 @@ tns () {
 # Random utils
 unset d
 alias d="say 'Done'"
+
+alias s="say"
