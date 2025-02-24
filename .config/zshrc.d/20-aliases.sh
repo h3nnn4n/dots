@@ -22,6 +22,7 @@ alias gcan="git commit --amend --no-edit"
 alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
 alias gck='git remote update && git checkout'
 alias gk='git checkout'
+alias gru='git remote update'
 
 # dotfile syncing
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
