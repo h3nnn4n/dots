@@ -12,7 +12,8 @@ alias berta="time bundle exec ruby -Itest"
 alias pytest="pytest --pdbcls=IPython.core.debugger:Pdb -s"
 
 # Git stuff
-alias gl="git log --pretty=oneline --color | head -n15"
+alias gl="git log --pretty=oneline --color"
+alias glh="git log --pretty=oneline --color | head -n15"
 alias gs="git status"
 alias gc="git commit"
 alias gd="git diff"
@@ -20,6 +21,7 @@ alias gdc="git diff --cached"
 alias gap="git add --patch"
 alias gcan="git commit --amend --no-edit"
 alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
+alias gbh='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)" | head -n 15'
 alias gck='git remote update && git checkout'
 alias gk='git checkout'
 alias gru='git remote update'
