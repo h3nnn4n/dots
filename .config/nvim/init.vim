@@ -38,8 +38,8 @@ set list
 set listchars=""                  " Reset the listchars
 set listchars+=tab:▸\             " a tab should display as "▸"
 set listchars+=trail:.            " show trailing spaces as dots
-"set listchars+=space:·            " show leading space as "·"
-"set listchars+=eol:¬              " show end of line as "¬"
+set listchars+=space:·            " show leading space as "·"
+set listchars+=eol:¬              " show end of line as "¬"
 set listchars+=extends:>          " The character to show in the last column when wrap is off and the line goes beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is off and the line goes beyond the left of the screen
 
@@ -76,6 +76,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'racer-rust/vim-racer'
 Plug 'Shougo/denite.nvim'
+Plug 'chiedo/vim-case-convert'
 
 Plug 'davidhalter/jedi-vim'
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -130,8 +131,11 @@ Plug 'juliosueiras/vim-terraform-completion'
 
 Plug 'github/copilot.vim'
 
+" Required by typescript-tool
+Plug 'nvim-lua/plenary.nvim'
+
 Plug 'leafOfTree/vim-svelte-plugin'
-Plug 'leafgarland/typescript-vim'
+Plug 'pmizio/typescript-tools.nvim'
 Plug 'Shougo/context_filetype.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
