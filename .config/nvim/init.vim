@@ -356,7 +356,7 @@ noremap   <Right>  <NOP>
 " -------------------- Prettier --------------------
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
-au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+" au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 
 
 " stuff to handle svelte files which have multiple languages / syntaxes in them
