@@ -19,6 +19,7 @@ alias gc="git commit"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gap="git add --patch"
+alias gca="git commit --amend"
 alias gcan="git commit --amend --no-edit"
 alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)" | head -n 15'
 alias gba='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
