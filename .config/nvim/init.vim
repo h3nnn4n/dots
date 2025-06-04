@@ -129,7 +129,10 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
-Plug 'github/copilot.vim'
+" AI Stuff
+" Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'greggh/claude-code.nvim'
 
 " Required by typescript-tool
 Plug 'nvim-lua/plenary.nvim'
@@ -411,3 +414,9 @@ fu! NERDCommenter_after()
     let g:ft = ''
   endif
 endfu
+
+
+" -------------------- AI Stuff --------------------
+
+
+lua require('ai')
