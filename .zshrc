@@ -11,6 +11,7 @@ BENCH_RESULTS=$HOME/.zshrc_benchmarks
 touch "${BENCH_RESULTS}"
 printf "" > "${BENCH_RESULTS}"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ZSH_DISABLE_COMPFIX=true
 
@@ -18,15 +19,13 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="af-magic"
 
-# git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Zsh plugins
 # For fzf-zsh-plugin: git clone https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
-# For zsh-autosuggestions: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 plugins=(git zsh-autosuggestions fzf-zsh-plugin)
 
 
