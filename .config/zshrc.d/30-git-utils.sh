@@ -64,7 +64,7 @@ function gupp() {
   echo "Merging with origin/master..."
   git merge origin/master --no-edit || return 1
   echo "Pushing ${current_branch} to upstream..."
-  git push upstream "${current_branch}" || return 1
+  git push origin "${current_branch}" || return 1
   echo "✓ Update and push complete"
 }
 
