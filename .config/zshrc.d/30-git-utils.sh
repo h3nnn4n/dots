@@ -39,3 +39,50 @@ function gr() {
     git remote -v | awk '{print $1 " " $2}' | uniq |
     fzf --height 40% --tac | awk '{print $1}'
 }
+
+# Git update: fetch, pull current branch, merge with origin/master
+function gup() {
+  is_in_git_repo || return 1
+  local current_branch=$(git branch --show-current)
+  echo "Fetching from all remotes..."
+  git fetch || return 1
+  echo "Pulling ${current_branch} from origin..."
+  git pull origin "${current_branch}" || return 1
+  echo "Merging with origin/master..."
+  git merge origin/master || return 1
+  echo "✓ Update complete"
+}
+
+# Git update and push: fetch, pull current branch, merge with origin/master, push to upstream
+function gupp() {
+  is_in_git_repo || return 1
+  local current_branch=$(git branch --show-current)
+  echo "Fetching from all remotes..."
+  git fetch || return 1
+  echo "Pulling ${current_branch} from origin..."
+  git pull origin "${current_branch}" || return 1
+  echo "Merging with origin/master..."
+  git merge origin/master || return 1
+  echo "Pushing ${current_branch} to upstream..."
+  git push upstream "${current_branch}" || return 1
+  echo "✓ Update and push complete"
+}
+
+# Git aliases
+unset gs
+unset gl
+
+alias gl="git log --pretty=oneline --color | head -n 15"
+alias gla="git log --pretty=oneline --color"
+alias gs="git status"
+alias gc="git commit"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gap="git add --patch"
+alias gca="git commit --amend"
+alias gcan="git commit --amend --no-edit"
+alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)" | head -n 15'
+alias gba='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
+alias gck='git remote update && git checkout'
+alias gk='git checkout'
+alias gru='git remote update'
