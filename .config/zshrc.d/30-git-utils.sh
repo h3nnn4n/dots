@@ -49,7 +49,7 @@ function gup() {
   echo "Pulling ${current_branch} from origin..."
   git pull origin "${current_branch}" || return 1
   echo "Merging with origin/master..."
-  git merge origin/master || return 1
+  git merge origin/master --no-edit || return 1
   echo "✓ Update complete"
 }
 
@@ -62,7 +62,7 @@ function gupp() {
   echo "Pulling ${current_branch} from origin..."
   git pull origin "${current_branch}" || return 1
   echo "Merging with origin/master..."
-  git merge origin/master || return 1
+  git merge origin/master --no-edit || return 1
   echo "Pushing ${current_branch} to upstream..."
   git push upstream "${current_branch}" || return 1
   echo "✓ Update and push complete"
