@@ -126,7 +126,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 call plug#end()
 
 set clipboard+=unnamedplus
