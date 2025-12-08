@@ -26,7 +26,7 @@ source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Zsh plugins
 # For fzf-zsh-plugin: git clone https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
-plugins=(git zsh-autosuggestions fzf-zsh-plugin)
+plugins=(git zsh-autosuggestions fzf-zsh-plugin zsh-fzf-history-search)
 
 
 # Env setup
