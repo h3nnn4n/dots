@@ -3,8 +3,7 @@
 --
 -- Some resources:
 -- https://neovim.io/doc/user/lua-guide.html#lua-guide
-
-local nvim_lsp = require('lspconfig')
+-- Updated to use vim.lsp.config (nvim 0.11+) instead of deprecated lspconfig
 
 local servers = {
   'clangd',
@@ -12,8 +11,5 @@ local servers = {
   'rust_analyzer',
 }
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-  }
-end
+-- Enable LSP servers using the new vim.lsp API
+vim.lsp.enable(servers)
