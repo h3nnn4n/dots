@@ -27,6 +27,18 @@ tns () {
   tmux attach-session -d -t "${SessionName}"
 }
 
+tnsc () {
+  SessionName=$1
+  tmux new-session -d -s "${SessionName}"    && \
+  tmux rename-window nvim                    && \
+  tmux send-keys -t "${SessionName}:nvim" "nvim" C-m && \
+  tmux new-window -d -n ravioli              && \
+  tmux new-window -d -n fettuccine           && \
+  tmux new-window -d -n claude               && \
+  tmux send-keys -t "${SessionName}:claude" "claude" C-m && \
+  tmux attach-session -d -t "${SessionName}"
+}
+
 # Random utils
 unset d
 alias d="say 'Done'"
