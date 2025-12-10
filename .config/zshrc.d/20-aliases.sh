@@ -29,12 +29,12 @@ tns () {
 
 tnsc () {
   SessionName=$1
-  tmux new-session -d -s "${SessionName}"    && \
-  tmux rename-window nvim                    && \
-  tmux send-keys -t "${SessionName}:nvim" "nvim" C-m && \
-  tmux new-window -d -n ravioli              && \
-  tmux new-window -d -n fettuccine           && \
-  tmux new-window -d -n claude               && \
+  tmux new-session -d -s "${SessionName}"                && \
+  tmux rename-window -t "${SessionName}:0" nvim          && \
+  tmux send-keys -t "${SessionName}:0" "nvim" C-m        && \
+  tmux new-window -d -t "${SessionName}" -n ravioli      && \
+  tmux new-window -d -t "${SessionName}" -n fettuccine   && \
+  tmux new-window -d -t "${SessionName}" -n claude       && \
   tmux send-keys -t "${SessionName}:claude" "claude" C-m && \
   tmux attach-session -d -t "${SessionName}"
 }
