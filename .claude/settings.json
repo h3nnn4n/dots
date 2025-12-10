@@ -1,0 +1,169 @@
+{
+  "permissions": {
+    "allow": [
+      // Read-only tools (always safe)
+      "Read",
+      "Glob",
+      "Grep",
+
+      // File editing tools (always allowed)
+      "Edit",
+      "Write",
+
+      // Git readonly commands - inspection and history
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch --list:*)",
+      "Bash(git branch -v:*)",
+      "Bash(git branch -a:*)",
+      "Bash(git remote:*)",
+      "Bash(git reflog:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git cat-file:*)",
+      "Bash(git blame:*)",
+      "Bash(git describe:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git rev-list:*)",
+      "Bash(git tag --list:*)",
+      "Bash(git config --get:*)",
+      "Bash(git config --list:*)",
+      "Bash(git shortlog:*)",
+      "Bash(git whatchanged:*)",
+
+      // Dotfiles readonly commands - inspection and history
+      "Bash(dotfiles status)",
+      "Bash(dotfiles log:*)",
+      "Bash(dotfiles diff:*)",
+      "Bash(dotfiles show:*)",
+      "Bash(dotfiles branch:*)",
+      "Bash(dotfiles remote:*)",
+
+      // Shell readonly commands - file inspection
+      "Bash(ls:*)",
+      "Bash(ll:*)",
+      "Bash(la:*)",
+      "Bash(pwd)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(less:*)",
+      "Bash(more:*)",
+      "Bash(file:*)",
+      "Bash(stat:*)",
+      "Bash(wc:*)",
+
+      // Shell readonly commands - searching and finding
+      "Bash(grep:*)",
+      "Bash(egrep:*)",
+      "Bash(fgrep:*)",
+      "Bash(find:*)",
+      "Bash(which:*)",
+      "Bash(whereis:*)",
+      "Bash(type:*)",
+      "Bash(tree:*)",
+
+      // Shell readonly commands - text processing
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(diff:*)",
+      "Bash(comm:*)",
+      "Bash(cut:*)",
+      "Bash(awk:*)",
+      "Bash(sed -n:*)",
+
+      // Shell readonly commands - system information
+      "Bash(echo:*)",
+      "Bash(env)",
+      "Bash(printenv:*)",
+      "Bash(date:*)",
+      "Bash(whoami)",
+      "Bash(hostname)",
+      "Bash(uname:*)",
+      "Bash(uptime)",
+      "Bash(df:*)",
+      "Bash(du:*)",
+      "Bash(ps:*)",
+      "Bash(top -l 1:*)",
+      "Bash(jobs)",
+      "Bash(id:*)",
+
+      // Package manager readonly commands
+      "Bash(npm list:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm view:*)",
+      "Bash(npm info:*)",
+      "Bash(npm search:*)",
+      "Bash(npm outdated:*)",
+      "Bash(yarn list:*)",
+      "Bash(pip list:*)",
+      "Bash(pip show:*)",
+
+      // Docker readonly commands
+      "Bash(docker ps:*)",
+      "Bash(docker images:*)",
+      "Bash(docker inspect:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker version)",
+      "Bash(docker info)"
+    ],
+
+    "ask": [
+      // File operations (requires approval)
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(dd:*)",
+      "Bash(shred:*)",
+
+      // Network operations (requires approval)
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(netcat:*)",
+
+      // Git write operations (requires approval)
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git clean:*)",
+      "Bash(git stash:*)",
+
+      // Dotfiles write operations (requires approval)
+      "Bash(dotfiles add:*)",
+      "Bash(dotfiles commit:*)",
+      "Bash(dotfiles push:*)",
+      "Bash(dotfiles pull:*)",
+      "Bash(dotfiles stash:*)",
+
+      // Process control (requires approval)
+      "Bash(kill:*)",
+      "Bash(killall:*)",
+      "Bash(pkill:*)",
+
+      // System modification (requires approval)
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(chgrp:*)",
+
+      // Package installation (requires approval)
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(yarn add:*)",
+      "Bash(yarn remove:*)",
+      "Bash(pip install:*)",
+      "Bash(pip uninstall:*)"
+    ]
+  }
+}
