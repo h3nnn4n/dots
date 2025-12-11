@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "acceptEdits",
     "allow": [
       // Read-only tools (always safe)
       "Read",
@@ -32,6 +33,31 @@
       "Bash(git config --list:*)",
       "Bash(git shortlog:*)",
       "Bash(git whatchanged:*)",
+
+      // Git write operations - commits allowed without approval
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+
+      // GitHub CLI readonly commands - PRs, issues, and repo info
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr status:*)",
+      "Bash(gh issue view:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue status:*)",
+      "Bash(gh repo view:*)",
+      "Bash(gh repo list:*)",
+      "Bash(gh status)",
+      "Bash(gh run view:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh workflow view:*)",
+      "Bash(gh workflow list:*)",
+      "Bash(gh release view:*)",
+      "Bash(gh release list:*)",
+      "Bash(gh api --method GET:*)",
+      "Bash(gh api repos/*)",
 
       // Dotfiles readonly commands - inspection and history
       "Bash(dotfiles status)",
@@ -126,8 +152,6 @@
       "Bash(netcat:*)",
 
       // Git write operations (requires approval)
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git pull:*)",
       "Bash(git merge:*)",
