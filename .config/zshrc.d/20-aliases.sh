@@ -44,6 +44,18 @@ tnsc () {
   fi
 }
 
+tnscall () {
+  for dir in */; do
+    if [ -d "$dir" ]; then
+      dirname="${dir%/}"
+      echo "Creating tmux session for: $dirname"
+      tnsc "$dirname" -d
+    fi
+  done
+  echo "Done! Created sessions for all directories."
+  tls
+}
+
 # Random utils
 unset d
 alias d="say 'Done'"
