@@ -17,6 +17,7 @@ alias tls="tmux list-sessions"
 alias ta="tmux attach -t"
 alias t="tmux"
 alias tks="tmux kill-session"
+alias tka="tmux kill-server"
 
 tns () {
   SessionName=$1
