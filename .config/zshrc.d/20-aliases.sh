@@ -45,11 +45,14 @@ tnsc () {
 }
 
 tnscall () {
+  local current_dir="$(pwd)"
   for dir in */; do
     if [ -d "$dir" ]; then
       dirname="${dir%/}"
       echo "Creating tmux session for: $dirname"
+      cd "$dirname"
       tnsc "$dirname" -d
+      cd "$current_dir"
     fi
   done
   echo "Done! Created sessions for all directories."
