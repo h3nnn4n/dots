@@ -1,17 +1,15 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
-      // Read-only tools (always safe)
       "Read",
       "Glob",
       "Grep",
-
-      // File editing tools (always allowed)
       "Edit",
       "Write",
-
-      // Git readonly commands - inspection and history
+      "Bash(pnpm test:*)",
+      "Bash(pnpm nx typecheck)",
+      "Bash(scripts/wrapped_nx_run_many.js)",
+      "Bash(./scripts/wrapped_nx_run_many.js)",
       "Bash(git status:*)",
       "Bash(git log:*)",
       "Bash(git diff:*)",
@@ -33,12 +31,8 @@
       "Bash(git config --list:*)",
       "Bash(git shortlog:*)",
       "Bash(git whatchanged:*)",
-
-      // Git write operations - commits allowed without approval
       "Bash(git add:*)",
       "Bash(git commit:*)",
-
-      // GitHub CLI readonly commands - PRs, issues, and repo info
       "Bash(gh pr view:*)",
       "Bash(gh pr list:*)",
       "Bash(gh pr checks:*)",
@@ -58,16 +52,12 @@
       "Bash(gh release list:*)",
       "Bash(gh api --method GET:*)",
       "Bash(gh api repos/*)",
-
-      // Dotfiles readonly commands - inspection and history
       "Bash(dotfiles status)",
       "Bash(dotfiles log:*)",
       "Bash(dotfiles diff:*)",
       "Bash(dotfiles show:*)",
       "Bash(dotfiles branch:*)",
       "Bash(dotfiles remote:*)",
-
-      // Shell readonly commands - file inspection
       "Bash(ls:*)",
       "Bash(ll:*)",
       "Bash(la:*)",
@@ -80,8 +70,6 @@
       "Bash(file:*)",
       "Bash(stat:*)",
       "Bash(wc:*)",
-
-      // Shell readonly commands - searching and finding
       "Bash(grep:*)",
       "Bash(egrep:*)",
       "Bash(fgrep:*)",
@@ -90,8 +78,6 @@
       "Bash(whereis:*)",
       "Bash(type:*)",
       "Bash(tree:*)",
-
-      // Shell readonly commands - text processing
       "Bash(sort:*)",
       "Bash(uniq:*)",
       "Bash(diff:*)",
@@ -99,8 +85,6 @@
       "Bash(cut:*)",
       "Bash(awk:*)",
       "Bash(sed -n:*)",
-
-      // Shell readonly commands - system information
       "Bash(echo:*)",
       "Bash(env)",
       "Bash(printenv:*)",
@@ -115,8 +99,6 @@
       "Bash(top -l 1:*)",
       "Bash(jobs)",
       "Bash(id:*)",
-
-      // Package manager readonly commands
       "Bash(npm list:*)",
       "Bash(npm ls:*)",
       "Bash(npm view:*)",
@@ -126,32 +108,30 @@
       "Bash(yarn list:*)",
       "Bash(pip list:*)",
       "Bash(pip show:*)",
-
-      // Docker readonly commands
       "Bash(docker ps:*)",
       "Bash(docker images:*)",
       "Bash(docker inspect:*)",
       "Bash(docker logs:*)",
       "Bash(docker version)",
-      "Bash(docker info)"
+      "Bash(docker info)",
+      "Bash(flake8:*)",
+      "Bash(black:*)",
+      "Bash(isort:*)",
+      "Bash(pyright:*)",
+      "Bash(poetry run flake8:*)",
+      "Bash(poetry run black:*)",
+      "Bash(poetry run isort:*)",
+      "Bash(poetry run pyright:*)"
     ],
-
     "ask": [
-      // File operations (requires approval)
       "Bash(rm:*)",
       "Bash(rmdir:*)",
       "Bash(mv:*)",
       "Bash(cp:*)",
       "Bash(dd:*)",
       "Bash(shred:*)",
-
-      // Network operations (requires approval)
-      "Bash(curl:*)",
-      "Bash(wget:*)",
       "Bash(nc:*)",
       "Bash(netcat:*)",
-
-      // Git write operations (requires approval)
       "Bash(git push:*)",
       "Bash(git pull:*)",
       "Bash(git merge:*)",
@@ -161,33 +141,29 @@
       "Bash(git switch:*)",
       "Bash(git clean:*)",
       "Bash(git stash:*)",
-
-      // Dotfiles write operations (requires approval)
       "Bash(dotfiles add:*)",
       "Bash(dotfiles commit:*)",
       "Bash(dotfiles push:*)",
       "Bash(dotfiles pull:*)",
       "Bash(dotfiles stash:*)",
-
-      // Process control (requires approval)
       "Bash(kill:*)",
       "Bash(killall:*)",
       "Bash(pkill:*)",
-
-      // System modification (requires approval)
       "Bash(sudo:*)",
       "Bash(su:*)",
       "Bash(chmod:*)",
       "Bash(chown:*)",
       "Bash(chgrp:*)",
-
-      // Package installation (requires approval)
       "Bash(npm install:*)",
       "Bash(npm uninstall:*)",
       "Bash(yarn add:*)",
       "Bash(yarn remove:*)",
       "Bash(pip install:*)",
       "Bash(pip uninstall:*)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true
   }
 }

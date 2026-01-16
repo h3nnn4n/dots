@@ -1,5 +1,20 @@
 # Global Claude Code Instructions
 
+## Git Commit Guidelines
+
+### Commit Message Format:
+- **NEVER** add commit bodies unless the commit is exceptionally complex (which it usually should not be)
+- Keep commit messages as simple one-line summaries
+- **NEVER** add Claude as co-author
+- **NEVER** add "Generated with Claude Code" footer or similar attribution
+- Focus on clear, concise commit messages that describe the change
+
+### Examples:
+- Good: `git commit -m "Fix authentication bug in login flow"`
+- Good: `git commit -m "Add dark mode toggle to settings"`
+- Bad: Adding multi-line commit bodies with explanations unless absolutely necessary
+- Bad: Adding co-author tags or attribution footers
+
 ## Dotfiles Management
 
 When working with files in `~/.config/` or any dotfiles, always use the `dotfiles` alias instead of regular `git` commands.
