@@ -59,6 +59,14 @@ tnscall () {
   tls
 }
 
+tnb () {
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Uncommitted changes detected, aborting."
+    return 1
+  fi
+  git checkout master && git pull && git checkout -b "$1"
+}
+
 # Random utils
 unset d
 alias d="say 'Done'"
