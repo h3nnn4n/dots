@@ -68,6 +68,12 @@ function gupp() {
   echo "✓ Update and push complete"
 }
 
+function gck() {
+  git remote update
+  git checkout "$1"
+  git pull origin "$1"
+}
+
 # Git aliases
 unset gs
 unset gl
@@ -84,6 +90,5 @@ alias gca="git commit --amend"
 alias gcan="git commit --amend --no-edit"
 alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)" | head -n 15'
 alias gba='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
-alias gck='git remote update && git checkout'
 alias gk='git checkout'
 alias gru='git remote update'
