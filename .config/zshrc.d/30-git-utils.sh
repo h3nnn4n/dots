@@ -69,8 +69,9 @@ function gupp() {
 }
 
 function gck() {
-  git remote update
-  git checkout "$1"
+  git fetch origin "$1" || return 1
+  # Create local branch tracking origin if it doesn't exist yet
+  git checkout "$1" 2>/dev/null || git checkout -b "$1" --track "origin/$1" || return 1
   git pull origin "$1"
 }
 
