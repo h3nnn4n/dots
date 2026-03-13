@@ -75,6 +75,14 @@ function gck() {
   git pull origin "$1"
 }
 
+gnb () {
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Uncommitted changes detected, aborting."
+    return 1
+  fi
+  git checkout master && git pull && git checkout -b "$1"
+}
+
 # Git aliases
 unset gs
 unset gl
