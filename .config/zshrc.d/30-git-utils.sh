@@ -109,3 +109,40 @@ alias gb='git branch --sort=-committerdate --format="%(committerdate:relative)%0
 alias gba='git branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"'
 alias gk='git checkout'
 alias gru='git remote update'
+
+find_branch() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: find_branch <pattern>"
+    return 1
+  fi
+
+  local pattern="$1"
+  local sep=$'\x1f'
+  local results=""
+
+  for dir in */; do
+    [[ -d "$dir" ]] || continue
+    local d="${dir%/}"
+
+    git -C "$d" rev-parse --git-dir >/dev/null 2>&1 || continue
+
+    local matches
+    matches=$(git -C "$d" branch --sort=-committerdate \
+      --format="%(refname:short)${sep}%(objectname:short)${sep}%(committerdate:relative)${sep}%(contents:subject)" \
+      | head -n 10 \
+      | grep -F -- "$pattern")
+
+    [[ -z "$matches" ]] && continue
+
+    while IFS="$sep" read -r branch sha age subject; do
+      results+="${d}${sep}${branch}${sep}${age}${sep}${sha}${sep}${subject}"$'\n'
+    done <<< "$matches"
+  done
+
+  if [[ -z "$results" ]]; then
+    echo "No matching branches found."
+    return 1
+  fi
+
+  printf '%s' "$results" | column -t -s "$sep"
+}
