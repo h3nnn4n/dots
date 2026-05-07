@@ -111,6 +111,8 @@ alias gk='git checkout'
 alias gru='git remote update'
 
 find_branch() {
+  setopt localoptions no_xtrace no_verbose
+
   if [[ -z "$1" ]]; then
     echo "Usage: find_branch <pattern>"
     return 1
@@ -119,14 +121,14 @@ find_branch() {
   local pattern="$1"
   local sep=$'\x1f'
   local results=""
+  local dir d matches branch sha age subject
 
   for dir in */; do
     [[ -d "$dir" ]] || continue
-    local d="${dir%/}"
+    d="${dir%/}"
 
     git -C "$d" rev-parse --git-dir >/dev/null 2>&1 || continue
 
-    local matches
     matches=$(git -C "$d" branch --sort=-committerdate \
       --format="%(refname:short)${sep}%(objectname:short)${sep}%(committerdate:relative)${sep}%(contents:subject)" \
       | head -n 10 \
