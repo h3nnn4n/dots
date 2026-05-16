@@ -1,0 +1,113 @@
+*coding-cheatsheet.txt*  Editor shortcuts
+
+                                                          *coding-cheatsheet*
+
+Blink.cmp (completion menu)                       *coding-cheatsheet-cmp*
+- <Tab> / <CR>      Accept selected suggestion
+- <C-n> / <C-p>     Cycle items
+- <C-e>             Dismiss menu
+- <C-Space>         Trigger menu manually
+
+LSP                                               *coding-cheatsheet-lsp*
+- gd                Go to definition
+- gD                Go to declaration
+- gr                Find references
+- gi                Go to implementation
+- K                 Hover docs (or diagnostic if on one)
+- <leader>rn        Rename symbol across project
+- <leader>la        Code action menu
+- ]d / [d           Next / prev diagnostic
+- :LspInfo          Show attached servers
+- :Mason            Open mason installer UI
+
+Conform.nvim (format)                             *coding-cheatsheet-format*
+- <leader>q         Format buffer or visual selection
+
+Nvim-lint                                         *coding-cheatsheet-lint*
+(runs automatically on BufWritePost + InsertLeave)
+
+Neosnippet                                        *coding-cheatsheet-snippets*
+- <C-k>             Expand snippet under cursor / jump placeholder
+
+Finder (fzf.vim / fzf-lua)                        *coding-cheatsheet-finder*
+- <leader>f         Git files
+- <leader>F         All files
+- <leader>l         Buffer lines
+- <leader>L         All lines (every buffer)
+- <leader>/         Grep prompt (or live grep)
+- <leader>rg        Grep word under cursor
+- :FinderFzf        Use fzf.vim backend
+- :FinderFzfLua     Use fzf-lua backend
+
+NERDTree (file tree)                              *coding-cheatsheet-tree*
+- <C-n>             Toggle tree
+- <leader>r         Focus + refresh tree
+
+Gitsigns (hunks)                                  *coding-cheatsheet-git*
+- ]c / [c           Next / prev hunk
+- <leader>hs        Stage hunk
+- <leader>hr        Reset hunk
+- <leader>hS        Stage entire buffer
+- <leader>hR        Reset entire buffer
+- <leader>hu        Undo last stage
+- <leader>hp        Preview hunk inline
+- <leader>hb        Blame current line
+- <leader>hd        Diff buffer vs HEAD
+- <leader>ht        Toggle word-level diff
+
+Fugitive (git)                                    *coding-cheatsheet-fugitive*
+- :G                Open status (stage/unstage/commit)
+- :Git <subcmd>     Run any git subcommand inline
+
+Buffergator (buffer list)                         *coding-cheatsheet-bufs*
+- :BuffergatorOpen  Show buffer panel
+- :BuffergatorToggle  Toggle the panel
+
+Persistence (sessions)                            *coding-cheatsheet-sessions*
+- <leader>sl        Load last session for cwd
+- <leader>sp        Pick from saved sessions
+- <leader>sq        Stop saving for this cwd
+(sessions auto-save on :qa per directory)
+
+Alpha (dashboard, when nvim opens with no args)   *coding-cheatsheet-dashboard*
+- s                 Restore session for cwd
+- S                 Pick saved session
+- e                 New file
+- q                 Quit nvim
+(plus numbered shortcuts for recent files)
+
+EasyMotion (navigation)                           *coding-cheatsheet-motion*
+- <leader><leader>c  2-char search (jump anywhere)
+- /                 Find (easymotion-sn replaces default search)
+- n / N             Next / prev match
+
+Tabularize (alignment)                            *coding-cheatsheet-align*
+- <leader>a:        Align on :
+- <leader>a=        Align on =
+- <leader>a,        Align on ,
+- <leader>a. ; + - * /
+                    Same, for those chars
+
+NERDCommenter                                     *coding-cheatsheet-comment*
+- <leader>cc        Toggle comment on line
+- <leader>cu        Uncomment
+- <leader>c<space>  Smart toggle
+- <leader>ci        Invert comments
+- <leader>cs        "Sexy" block comment
+- <leader>cy        Yank then comment
+- <leader>c$        Comment to end of line
+- <leader>cA        Append comment to line
+
+Vim-surround                                      *coding-cheatsheet-surround*
+- ys{motion}{c}     Add surround c (e.g. ysiw")
+- cs{old}{new}      Change surround
+- ds{c}             Delete surround
+- S{c}              (visual mode) wrap selection with c
+
+Misc                                              *coding-cheatsheet-misc*
+- Q                 Repeat last macro
+- <Up>/<Down>/...   No-op (forces hjkl)
+- <leader>?         Open this cheatsheet
+- <leader>a?        Open AI cheatsheet (|ai-cheatsheet|)
+
+ vim:tw=78:ts=8:ft=help:norl:

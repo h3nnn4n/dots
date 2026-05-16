@@ -1,0 +1,38 @@
+*ai-cheatsheet.txt*  AI shortcuts (minuet + codecompanion)
+
+                                                          *ai-cheatsheet*
+
+Minuet (inline AI completion)                     *ai-cheatsheet-minuet*
+(AI suggestions appear inside the blink.cmp menu, labeled "minuet")
+- :MinuetCloud      Use DeepSeek API
+- :MinuetLocal      Use LM Studio (local server on :1234)
+
+CodeCompanion (opening chat / agent)              *ai-cheatsheet-chat*
+- <leader>ac        Toggle chat (visual mode: add selection)
+- <leader>ab        Add current buffer to chat
+- <leader>am        Actions menu (refactor, explain, test, ...)
+- <leader>ap        Inline prompt (one-shot CodeCompanion request)
+
+CodeCompanion chat buffer                         *ai-cheatsheet-chat-buf*
+- <C-s>             Send message (works in insert or normal)
+- <CR>              Send (normal mode only)
+- gx                Clear all messages
+- <C-c>             Close chat
+- gr                Regenerate last response
+- ga                Swap adapter (deepseek / lmstudio)
+- gm                Swap model
+- ?                 Show every chat keymap
+
+CodeCompanion slash commands (type / in chat)     *ai-cheatsheet-slash*
+- /buffer           Add current buffer to context
+- /file             Pick a file to include
+- /symbols          Outline of current buffer's symbols
+- /fetch            Pull a URL into context
+- /now              Insert current date/time
+- /compact          Summarize earlier turns to save tokens
+
+Cheatsheets                                       *ai-cheatsheet-cheats*
+- <leader>a?        Open this cheatsheet
+- <leader>?         Open coding cheatsheet (|coding-cheatsheet|)
+
+ vim:tw=78:ts=8:ft=help:norl:
