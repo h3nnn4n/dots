@@ -24,7 +24,6 @@ require('lazy').setup({
     -- Editor essentials
     'editorconfig/editorconfig-vim',
     'embear/vim-localvimrc',
-    'wellle/context.vim',
 
     -- Treesitter
     { 'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate' },
@@ -32,9 +31,6 @@ require('lazy').setup({
 
     -- Icons / filetype syntax
     'ryanoasis/vim-devicons',
-    'HerringtonDarkholme/yats.vim',
-    'cespare/vim-toml',
-    'tikhomirov/vim-glsl',
 
     -- Snippets (kept; expansion via <C-k>)
     'Shougo/neosnippet.vim',
@@ -54,11 +50,7 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     'lewis6991/gitsigns.nvim',
 
-    -- Django / Ruby / YAML
-    'vim-ruby/vim-ruby',
-    'tpope/vim-rails',
-    { 'tpope/vim-rbenv', ft = 'ruby' },
-    { 'tpope/vim-bundler', ft = 'ruby' },
+    -- YAML
     'stephpy/vim-yaml',
 
     -- Misc utilities
