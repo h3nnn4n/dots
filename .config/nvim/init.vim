@@ -99,8 +99,7 @@ map  N <Plug>(easymotion-prev)
 " Theme settings
 set termguicolors
 syntax on
-lua require('gruvbox').setup({ contrast = 'hard' })
-colorscheme gruvbox
+lua require('gruvbox-setup')
 set background=dark
 filetype plugin indent on
 
