@@ -60,8 +60,8 @@ call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'embear/vim-localvimrc'
 Plug 'wellle/context.vim'
-"Plug 'nvim-treesitter/nvim-treesitter'
-"Plug 'romgrk/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master', 'do': ':TSUpdate' }
+Plug 'romgrk/nvim-treesitter-context'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -127,6 +127,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
 
 " Plug 'github/copilot.vim'
+
+" AI: inline completion + chat
+Plug 'nvim-lua/plenary.nvim'
+Plug 'milanglacier/minuet-ai.nvim'
+Plug 'olimorris/codecompanion.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 call plug#end()
 
 set clipboard+=unnamedplus
@@ -323,6 +329,9 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 "  Taken from:
 "  https://gist.github.com/mengwangk/570a6ceb8cd14e55f4d89ac865850418#file-init-vim-L102
 lua require('lsp')
+lua require('treesitter')
+lua require('minuet-setup')
+lua require('codecompanion-setup')
 
 " Completion
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
