@@ -91,6 +91,9 @@ require('lazy').setup({
     -- LSP
     'neovim/nvim-lspconfig',
 
+    -- Keymap discoverability
+    'folke/which-key.nvim',
+
     -- Filetypes
     'nathangrigg/vim-beancount',
     'hashivim/vim-terraform',
