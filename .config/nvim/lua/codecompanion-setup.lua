@@ -3,20 +3,40 @@ if not ok then return end
 
 codecompanion.setup({
   adapters = {
-    deepseek = function()
-      return require('codecompanion.adapters').extend('openai_compatible', {
-        env = {
-          url = 'https://api.deepseek.com',
-          api_key = 'DEEPSEEK_API_KEY',
-          chat_url = '/v1/chat/completions',
-        },
-        schema = {
-          model = {
-            default = 'deepseek-chat',
+    http = {
+      deepseek = function()
+        return require('codecompanion.adapters').extend('openai_compatible', {
+          env = {
+            url = 'https://api.deepseek.com',
+            api_key = 'DEEPSEEK_API_KEY',
+            chat_url = '/v1/chat/completions',
           },
-        },
-      })
-    end,
+          schema = {
+            model = {
+              default = 'deepseek-chat',
+            },
+          },
+        })
+      end,
+      lmstudio = function()
+        return require('codecompanion.adapters').extend('openai_compatible', {
+          env = {
+            url = 'http://localhost:1234',
+            api_key = 'lm-studio',
+            chat_url = '/v1/chat/completions',
+          },
+          schema = {
+            model = {
+              default = 'lmstudio-community/qwen3-vl-30b-a3b-thinking-mlx',
+            },
+          },
+        })
+      end,
+      opts = { show_presets = false },
+    },
+    acp = {
+      opts = { show_presets = false },
+    },
   },
   strategies = {
     chat = { adapter = 'deepseek' },
