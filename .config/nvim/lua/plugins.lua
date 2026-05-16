@@ -73,7 +73,7 @@ require('lazy').setup({
     'ibhagwan/fzf-lua',
     'nvim-lualine/lualine.nvim',
     'nathanaelkane/vim-indent-guides',
-    'kien/rainbow_parentheses.vim',
+    'HiPhish/rainbow-delimiters.nvim',
 
     -- LSP
     'neovim/nvim-lspconfig',

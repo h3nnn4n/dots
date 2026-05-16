@@ -68,13 +68,6 @@ let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 
 
-" -------------------- Rainbow Parentheses --------------------
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-
 " -------------------- FZF --------------------
 " Not sure if the manual path update is required with vim-plug
 "set rtp+=/usr/local/opt/fzf " for osx, with homebrew
