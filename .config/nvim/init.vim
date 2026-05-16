@@ -3,6 +3,7 @@ set t_Co=256
 
 " -------------------- vim stuff --------------------
 set number
+set relativenumber
 set linebreak
 set nowrap
 set showmatch
