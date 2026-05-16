@@ -1,0 +1,74 @@
+*ai-cheatsheet.txt*  AI assistant shortcuts (minuet + codecompanion)
+
+                                                              *ai-cheatsheet*
+==============================================================================
+GHOST TEXT (minuet, while suggestion is visible)             *ai-cheatsheet-ghost*
+
+    <C-y>       Accept full suggestion
+    <C-l>       Accept one line
+    <C-f>       Next suggestion
+    <C-b>       Previous suggestion
+    <C-e>       Dismiss
+
+==============================================================================
+OPENING CHAT (codecompanion)                                 *ai-cheatsheet-chat*
+
+    ,ac         Toggle chat (visual mode: add selection)
+    ,ab         Add current buffer to chat
+    ,am         Actions menu (refactor, explain, generate test...)
+    ,ap         Inline prompt — type a one-shot request
+
+==============================================================================
+INSIDE THE CHAT BUFFER                                       *ai-cheatsheet-chat-buf*
+
+    <C-s>       Send message (works in insert OR normal mode)
+    <CR>        Send (normal mode only)
+    gr          Regenerate last response
+    gx          Clear all messages (same window, fresh state)
+    <C-c>       Close chat
+    ga          Swap adapter (deepseek <-> lmstudio)
+    gm          Swap model
+    ?           Show every chat keymap (the real cheat sheet)
+
+==============================================================================
+SLASH COMMANDS — type `/` inside chat buffer                 *ai-cheatsheet-slash*
+
+    /buffer     Add current buffer to chat context
+    /file       Pick a file to include
+    /symbols    Outline of current buffer's symbols (cheap context)
+    /fetch      Pull a URL into context
+    /now        Insert current date/time
+    /compact    Summarize earlier turns to save tokens
+
+==============================================================================
+PROVIDER SWAP — minuet runtime                               *ai-cheatsheet-provider*
+
+    :MinuetCloud    Use DeepSeek API (default at startup)
+    :MinuetLocal    Use LM Studio (local server on :1234)
+
+==============================================================================
+OPENING THIS CHEATSHEET                                      *ai-cheatsheet-open*
+
+    ,a?                       Open this file in a help window
+    :h ai-cheatsheet          Same, via the help system
+    :h ai-cheatsheet-chat     Jump to a specific section
+
+==============================================================================
+TYPICAL FLOWS                                                *ai-cheatsheet-flows*
+
+Ask about a function:
+    visual-select it -> ,ac -> type your question -> <C-s>
+
+Ask about the whole file:
+    ,ab -> ,ac -> type question -> <C-s>
+
+Refactor selected code:
+    visual-select -> ,am -> pick "Refactor" from menu
+
+Switch to local model for a chat:
+    ,ac -> ga -> pick lmstudio
+
+Switch ghost text to local model:
+    :MinuetLocal
+
+ vim:tw=78:ts=8:ft=help:norl:
