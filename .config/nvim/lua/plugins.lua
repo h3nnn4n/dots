@@ -30,7 +30,6 @@ require('lazy').setup({
     'romgrk/nvim-treesitter-context',
 
     -- Icons / filetype syntax
-    'ryanoasis/vim-devicons',
     'nvim-tree/nvim-web-devicons',
 
     -- Snippets (kept; expansion via <C-k>)
