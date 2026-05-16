@@ -56,7 +56,7 @@ require('lazy').setup({
 
     -- Git
     'tpope/vim-fugitive',
-    'airblade/vim-gitgutter',
+    'lewis6991/gitsigns.nvim',
 
     -- Django / Ruby / YAML
     'vim-scripts/django.vim',
