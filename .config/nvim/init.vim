@@ -333,6 +333,10 @@ lua require('treesitter')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 
+" -------------------- AI cheatsheet --------------------
+silent! helptags ALL
+nnoremap <silent> <leader>a? :help ai-cheatsheet<CR>
+
 " Completion
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
