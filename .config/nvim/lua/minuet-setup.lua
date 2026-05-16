@@ -21,8 +21,8 @@ minuet.setup({
     keymap = {
       accept = '<C-y>',
       accept_line = '<C-l>',
-      next = '<C-]>',
-      prev = '<C-[>',
+      next = '<C-f>',
+      prev = '<C-b>',
       dismiss = '<C-e>',
     },
   },
