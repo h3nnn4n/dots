@@ -87,15 +87,8 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
-
-" fzf.vim is hanging
- nmap <Leader>f :GFiles<CR>
- nmap <Leader>F :Files<CR>
- nmap <Leader>l :BLines<CR>
- nmap <Leader>L :Lines<CR>
-
-nmap <Leader>/ :Rg<Space>
+" Finder keymaps live in lua/finder-setup.lua; swap with :FinderFzf / :FinderFzfLua
+let g:use_fzf_lua = 0
 
 
 " -------------------- EasyMotion --------------------
@@ -206,6 +199,7 @@ lua require('lint')
 lua require('which-key-setup')
 lua require('gitsigns-setup')
 lua require('lualine-setup')
+lua require('finder-setup')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 
