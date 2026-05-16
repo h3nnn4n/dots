@@ -67,19 +67,6 @@ let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 
 
-" -------------------- ALE --------------------
-let g:ale_linters = { 'python': ['pyright', 'bandit', 'flake8'] }
-
-let g:ale_python_auto_poetry = 1
-
-"let g:ale_python_flake8_executable = 'poetry run flake8'
-"let g:ale_python_bandit_executable = 'poetry run bandit'
-"let g:ale_python_pyright_executable = 'poetry run pyright'
-
-"let g:ale_python_pyright_auto_poetry = 1
-"let g:ale_python_flake8_auto_poetry = 1
-
-
 " -------------------- Rainbow Parentheses --------------------
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -99,14 +86,6 @@ if has('nvim') && !exists('g:fzf_layout')
   autocmd  FileType fzf set laststatus=0 noshowmode noruler
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
-
-"nmap <Leader>f :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
-"nmap <Leader>F :call fzf#run({'sink': 'e'})<CR>
-
-"nmap <Leader>f :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})<CR>
-"nmap <Leader>F :call fzf#run({'sink': 'e', 'down': '40%'})<CR>
-"nmap <Leader>l :BLines<CR>
-"nmap <Leader>L :Lines<CR>
 
 nnoremap <silent> <Leader>rg :Rg <C-R><C-W><CR>
 
@@ -183,10 +162,7 @@ au BufRead,BufNewFile *.asm set filetype=rgbasm
 au BufRead,BufNewFile *.inc set filetype=rgbasm
 
 
-" -------------------- Deoplete --------------------
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
-
+" -------------------- Snippets --------------------
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -197,35 +173,10 @@ imap <F2> :ContextPeek<CR>
 smap <F2> :ContextPeek<CR>
 xmap <F2> :ContextPeek<CR>
 
-
-" -------------------- Snippets --------------------
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
 let g:context_enabled = 0
-
-
-" -------------------- Python Stuff --------------------
-" Black
-nnoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
-inoremap <buffer><silent> <leader>q <cmd>call Black()<cr>
-
-
-" Isort
-nnoremap <buffer><silent> <leader>i :Isort<cr>
-inoremap <buffer><silent> <leader>i :Isort<cr>
-
-let g:black#settings = {
-    \ 'fast': 1
-\}
-
-
-" Jedi
-" disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
-
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
 
 
 " -------------------- SQL --------------------
@@ -248,21 +199,19 @@ let NERDTreeRespectWildIgnore=1
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
 
-" -------------------- LSP --------------------
-"  Taken from:
-"  https://gist.github.com/mengwangk/570a6ceb8cd14e55f4d89ac865850418#file-init-vim-L102
+" -------------------- LSP / completion / format / lint --------------------
+lua require('completion')
 lua require('lsp')
 lua require('treesitter')
+lua require('format')
+lua require('lint')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 
-" -------------------- AI cheatsheet --------------------
+" -------------------- Cheatsheets --------------------
 silent! helptags ALL
 nnoremap <silent> <leader>a? :help ai-cheatsheet<CR>
-
-" Completion
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-
+nnoremap <silent> <leader>?  :help coding-cheatsheet<CR>
 
 " -------------------- Custom Stuff --------------------
 "" Make Q repeat the last macro instead of Ex mode

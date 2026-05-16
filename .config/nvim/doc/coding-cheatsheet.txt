@@ -1,0 +1,112 @@
+*coding-cheatsheet.txt*  LSP, completion, format, lint shortcuts
+
+                                                          *coding-cheatsheet*
+==============================================================================
+COMPLETION MENU (blink.cmp)                              *coding-cheatsheet-cmp*
+
+    <Tab>       Accept selected suggestion
+    <CR>        Accept (same as Tab)
+    <C-n>       Next item
+    <C-p>       Previous item
+    <C-e>       Dismiss menu
+    <C-Space>   Trigger menu manually
+
+AI completions appear inline in the menu, labeled "minuet". Pick them
+with Tab/Enter like any other completion.
+
+==============================================================================
+LSP (active when a language server is attached)          *coding-cheatsheet-lsp*
+
+    gd          Go to definition
+    gD          Go to declaration
+    gr          Find references
+    gi          Go to implementation
+    K           Show hover documentation
+    <leader>rn  Rename symbol across project
+    <leader>la  Code action menu (quick fixes, refactors, imports)
+
+Check what's running:
+    :LspInfo    Show attached LSPs for current buffer
+    :Mason      Open mason UI (install/update LSPs and tools)
+
+==============================================================================
+FORMAT (conform.nvim)                                    *coding-cheatsheet-format*
+
+    <leader>q   Format current buffer (or visual selection)
+
+Works across every filetype configured. Map of formatters:
+    python      ruff_format + ruff_organize_imports
+    js / ts     prettierd
+    svelte      prettierd
+    c / cpp     clang-format
+    rust        rustfmt
+    zig         zigfmt
+    lua         stylua
+    sh / bash   shfmt
+    toml        taplo
+    terraform   terraform fmt
+    json/yaml/html/css   prettierd
+
+==============================================================================
+LINT / DIAGNOSTICS                                       *coding-cheatsheet-lint*
+
+Linters run automatically on save (BufWritePost) and when you leave
+insert mode. Diagnostics use nvim's native floating UI.
+
+    ]d                            Jump to next diagnostic
+    [d                            Jump to previous diagnostic
+    K                             Hover (shows diagnostic if cursor is on one)
+    :lua vim.diagnostic.open_float()
+                                  Open diagnostic in a floating window
+
+Linters configured:
+    python      ruff (replaces flake8 + bandit + isort + pyflakes)
+    js / ts     eslint_d
+    svelte      eslint_d
+    sh / bash   shellcheck
+    c / rust / zig            (handled inside the LSP)
+
+==============================================================================
+SNIPPETS (neosnippet, unchanged)                         *coding-cheatsheet-snippets*
+
+    <C-k>       Expand snippet under cursor
+                Or jump to next placeholder inside an active snippet
+
+Snippet files live in ~/.config/nvim/snippets/
+See `snippets/python.snip` for examples.
+
+==============================================================================
+AI COMPLETION PROVIDER SWAP (minuet runtime)             *coding-cheatsheet-minuet*
+
+    :MinuetCloud    Use DeepSeek API
+    :MinuetLocal    Use LM Studio (local server on :1234)
+
+See |ai-cheatsheet| for the rest of the AI shortcuts (chat, buffer
+context, actions menu).
+
+==============================================================================
+OPENING THIS CHEATSHEET                                  *coding-cheatsheet-open*
+
+    ,?                            Open this file
+    :h coding-cheatsheet          Same, via help system
+    :h coding-cheatsheet-lsp      Jump to a specific section
+
+==============================================================================
+TYPICAL FLOWS                                            *coding-cheatsheet-flows*
+
+Edit a file in any language:
+    open file -> let LSP attach -> type code -> Tab to accept suggestions
+
+Refactor a name:
+    place cursor on symbol -> <leader>rn -> type new name -> <CR>
+
+Fix a lint warning:
+    cursor on warning line -> <leader>la -> pick fix from menu
+
+Format before commit:
+    ,q  (then :w)
+
+Install / update a new LSP:
+    :Mason -> i over server name to install -> u to update
+
+ vim:tw=78:ts=8:ft=help:norl:

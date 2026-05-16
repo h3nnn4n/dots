@@ -31,16 +31,6 @@ minuet.setup({
   provider_options = {
     openai_compatible = providers.cloud,
   },
-  virtualtext = {
-    auto_trigger_ft = { '*' },
-    keymap = {
-      accept = '<C-y>',
-      accept_line = '<C-l>',
-      next = '<C-f>',
-      prev = '<C-b>',
-      dismiss = '<C-e>',
-    },
-  },
 })
 
 local function swap(target)

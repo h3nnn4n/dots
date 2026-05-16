@@ -36,18 +36,19 @@ require('lazy').setup({
     'cespare/vim-toml',
     'tikhomirov/vim-glsl',
 
-    -- Completion stack (legacy)
-    { 'Shougo/deoplete.nvim', build = ':UpdateRemotePlugins' },
+    -- Snippets (kept; expansion via <C-k>)
     'Shougo/neosnippet.vim',
     'Shougo/neosnippet-snippets',
-    'deoplete-plugins/deoplete-jedi',
-    'racer-rust/vim-racer',
-    'Shougo/denite.nvim',
 
-    -- Python tooling
-    'davidhalter/jedi-vim',
-    { 'stsewd/isort.nvim', build = ':UpdateRemotePlugins' },
-    { 'a-vrma/black-nvim', build = ':UpdateRemotePlugins' },
+    -- Completion
+    { 'saghen/blink.cmp', version = '*' },
+
+    -- LSP / linter / formatter management
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'stevearc/conform.nvim',
+    'mfussenegger/nvim-lint',
 
     -- Folding
     'Konfekt/FastFold',
@@ -68,7 +69,6 @@ require('lazy').setup({
     -- Misc utilities
     'mbbill/undotree',
     'vim-scripts/a.vim',
-    'rhysd/vim-clang-format',
     'machakann/vim-highlightedyank',
     'mhinz/vim-startify',
     'myusuf3/numbers.vim',
@@ -88,16 +88,12 @@ require('lazy').setup({
     'nathanaelkane/vim-indent-guides',
     'kien/rainbow_parentheses.vim',
 
-    -- LSP / linters
+    -- LSP
     'neovim/nvim-lspconfig',
-    'w0rp/ale',
-    'neomake/neomake',
-    'vim-syntastic/syntastic',
 
     -- Filetypes
     'nathangrigg/vim-beancount',
     'hashivim/vim-terraform',
-    'juliosueiras/vim-terraform-completion',
 
     -- AI: inline completion + chat
     'nvim-lua/plenary.nvim',
