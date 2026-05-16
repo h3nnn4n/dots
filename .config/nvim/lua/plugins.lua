@@ -59,7 +59,6 @@ require('lazy').setup({
     'machakann/vim-highlightedyank',
     'goolord/alpha-nvim',
     'folke/persistence.nvim',
-    'myusuf3/numbers.vim',
     'bronson/vim-trailing-whitespace',
     'godlygeek/tabular',
     'jeetsukumaran/vim-buffergator',
