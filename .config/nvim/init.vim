@@ -158,16 +158,8 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
-vmap <F3> :ContextPeek<CR>
-nmap <F2> :ContextPeek<CR>
-imap <F2> :ContextPeek<CR>
-smap <F2> :ContextPeek<CR>
-xmap <F2> :ContextPeek<CR>
-
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
-let g:context_enabled = 0
 
 
 " -------------------- SQL --------------------
