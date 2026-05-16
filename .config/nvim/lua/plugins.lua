@@ -31,6 +31,7 @@ require('lazy').setup({
 
     -- Icons / filetype syntax
     'ryanoasis/vim-devicons',
+    'nvim-tree/nvim-web-devicons',
 
     -- Snippets (kept; expansion via <C-k>)
     'Shougo/neosnippet.vim',
