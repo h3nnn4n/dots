@@ -203,6 +203,7 @@ lua require('lsp')
 lua require('treesitter')
 lua require('format')
 lua require('lint')
+lua require('which-key-setup')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 
