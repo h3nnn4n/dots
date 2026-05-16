@@ -1,112 +1,113 @@
-*coding-cheatsheet.txt*  LSP, completion, format, lint shortcuts
+*coding-cheatsheet.txt*  Editor shortcuts
 
                                                           *coding-cheatsheet*
-==============================================================================
-COMPLETION MENU (blink.cmp)                              *coding-cheatsheet-cmp*
 
-    <Tab>       Accept selected suggestion
-    <CR>        Accept (same as Tab)
-    <C-n>       Next item
-    <C-p>       Previous item
-    <C-e>       Dismiss menu
-    <C-Space>   Trigger menu manually
+Blink.cmp (completion menu)                       *coding-cheatsheet-cmp*
+- <Tab> / <CR>      Accept selected suggestion
+- <C-n> / <C-p>     Cycle items
+- <C-e>             Dismiss menu
+- <C-Space>         Trigger menu manually
 
-AI completions appear inline in the menu, labeled "minuet". Pick them
-with Tab/Enter like any other completion.
+LSP                                               *coding-cheatsheet-lsp*
+- gd                Go to definition
+- gD                Go to declaration
+- gr                Find references
+- gi                Go to implementation
+- K                 Hover docs (or diagnostic if on one)
+- <leader>rn        Rename symbol across project
+- <leader>la        Code action menu
+- ]d / [d           Next / prev diagnostic
+- :LspInfo          Show attached servers
+- :Mason            Open mason installer UI
 
-==============================================================================
-LSP (active when a language server is attached)          *coding-cheatsheet-lsp*
+Conform.nvim (format)                             *coding-cheatsheet-format*
+- <leader>q         Format buffer or visual selection
 
-    gd          Go to definition
-    gD          Go to declaration
-    gr          Find references
-    gi          Go to implementation
-    K           Show hover documentation
-    <leader>rn  Rename symbol across project
-    <leader>la  Code action menu (quick fixes, refactors, imports)
+Nvim-lint                                         *coding-cheatsheet-lint*
+(runs automatically on BufWritePost + InsertLeave)
 
-Check what's running:
-    :LspInfo    Show attached LSPs for current buffer
-    :Mason      Open mason UI (install/update LSPs and tools)
+Neosnippet                                        *coding-cheatsheet-snippets*
+- <C-k>             Expand snippet under cursor / jump placeholder
 
-==============================================================================
-FORMAT (conform.nvim)                                    *coding-cheatsheet-format*
+Finder (fzf.vim / fzf-lua)                        *coding-cheatsheet-finder*
+- <leader>f         Git files
+- <leader>F         All files
+- <leader>l         Buffer lines
+- <leader>L         All lines (every buffer)
+- <leader>/         Grep prompt (or live grep)
+- <leader>rg        Grep word under cursor
+- :FinderFzf        Use fzf.vim backend
+- :FinderFzfLua     Use fzf-lua backend
 
-    <leader>q   Format current buffer (or visual selection)
+NERDTree (file tree)                              *coding-cheatsheet-tree*
+- <C-n>             Toggle tree
+- <leader>r         Focus + refresh tree
 
-Works across every filetype configured. Map of formatters:
-    python      ruff_format + ruff_organize_imports
-    js / ts     prettierd
-    svelte      prettierd
-    c / cpp     clang-format
-    rust        rustfmt
-    zig         zigfmt
-    lua         stylua
-    sh / bash   shfmt
-    toml        taplo
-    terraform   terraform fmt
-    json/yaml/html/css   prettierd
+Gitsigns (hunks)                                  *coding-cheatsheet-git*
+- ]c / [c           Next / prev hunk
+- <leader>hs        Stage hunk
+- <leader>hr        Reset hunk
+- <leader>hS        Stage entire buffer
+- <leader>hR        Reset entire buffer
+- <leader>hu        Undo last stage
+- <leader>hp        Preview hunk inline
+- <leader>hb        Blame current line
+- <leader>hd        Diff buffer vs HEAD
+- <leader>ht        Toggle word-level diff
 
-==============================================================================
-LINT / DIAGNOSTICS                                       *coding-cheatsheet-lint*
+Fugitive (git)                                    *coding-cheatsheet-fugitive*
+- :G                Open status (stage/unstage/commit)
+- :Git <subcmd>     Run any git subcommand inline
 
-Linters run automatically on save (BufWritePost) and when you leave
-insert mode. Diagnostics use nvim's native floating UI.
+Buffergator (buffer list)                         *coding-cheatsheet-bufs*
+- :BuffergatorOpen  Show buffer panel
+- :BuffergatorToggle  Toggle the panel
 
-    ]d                            Jump to next diagnostic
-    [d                            Jump to previous diagnostic
-    K                             Hover (shows diagnostic if cursor is on one)
-    :lua vim.diagnostic.open_float()
-                                  Open diagnostic in a floating window
+Persistence (sessions)                            *coding-cheatsheet-sessions*
+- <leader>sl        Load last session for cwd
+- <leader>sp        Pick from saved sessions
+- <leader>sq        Stop saving for this cwd
+(sessions auto-save on :qa per directory)
 
-Linters configured:
-    python      ruff (replaces flake8 + bandit + isort + pyflakes)
-    js / ts     eslint_d
-    svelte      eslint_d
-    sh / bash   shellcheck
-    c / rust / zig            (handled inside the LSP)
+Alpha (dashboard, when nvim opens with no args)   *coding-cheatsheet-dashboard*
+- s                 Restore session for cwd
+- S                 Pick saved session
+- e                 New file
+- q                 Quit nvim
+(plus numbered shortcuts for recent files)
 
-==============================================================================
-SNIPPETS (neosnippet, unchanged)                         *coding-cheatsheet-snippets*
+EasyMotion (navigation)                           *coding-cheatsheet-motion*
+- <leader><leader>c  2-char search (jump anywhere)
+- /                 Find (easymotion-sn replaces default search)
+- n / N             Next / prev match
 
-    <C-k>       Expand snippet under cursor
-                Or jump to next placeholder inside an active snippet
+Tabularize (alignment)                            *coding-cheatsheet-align*
+- <leader>a:        Align on :
+- <leader>a=        Align on =
+- <leader>a,        Align on ,
+- <leader>a. ; + - * /
+                    Same, for those chars
 
-Snippet files live in ~/.config/nvim/snippets/
-See `snippets/python.snip` for examples.
+NERDCommenter                                     *coding-cheatsheet-comment*
+- <leader>cc        Toggle comment on line
+- <leader>cu        Uncomment
+- <leader>c<space>  Smart toggle
+- <leader>ci        Invert comments
+- <leader>cs        "Sexy" block comment
+- <leader>cy        Yank then comment
+- <leader>c$        Comment to end of line
+- <leader>cA        Append comment to line
 
-==============================================================================
-AI COMPLETION PROVIDER SWAP (minuet runtime)             *coding-cheatsheet-minuet*
+Vim-surround                                      *coding-cheatsheet-surround*
+- ys{motion}{c}     Add surround c (e.g. ysiw")
+- cs{old}{new}      Change surround
+- ds{c}             Delete surround
+- S{c}              (visual mode) wrap selection with c
 
-    :MinuetCloud    Use DeepSeek API
-    :MinuetLocal    Use LM Studio (local server on :1234)
-
-See |ai-cheatsheet| for the rest of the AI shortcuts (chat, buffer
-context, actions menu).
-
-==============================================================================
-OPENING THIS CHEATSHEET                                  *coding-cheatsheet-open*
-
-    ,?                            Open this file
-    :h coding-cheatsheet          Same, via help system
-    :h coding-cheatsheet-lsp      Jump to a specific section
-
-==============================================================================
-TYPICAL FLOWS                                            *coding-cheatsheet-flows*
-
-Edit a file in any language:
-    open file -> let LSP attach -> type code -> Tab to accept suggestions
-
-Refactor a name:
-    place cursor on symbol -> <leader>rn -> type new name -> <CR>
-
-Fix a lint warning:
-    cursor on warning line -> <leader>la -> pick fix from menu
-
-Format before commit:
-    ,q  (then :w)
-
-Install / update a new LSP:
-    :Mason -> i over server name to install -> u to update
+Misc                                              *coding-cheatsheet-misc*
+- Q                 Repeat last macro
+- <Up>/<Down>/...   No-op (forces hjkl)
+- <leader>?         Open this cheatsheet
+- <leader>a?        Open AI cheatsheet (|ai-cheatsheet|)
 
  vim:tw=78:ts=8:ft=help:norl:
