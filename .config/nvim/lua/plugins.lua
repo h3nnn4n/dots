@@ -22,7 +22,6 @@ require('lazy').setup({
 
   spec = {
     -- Editor essentials
-    'editorconfig/editorconfig-vim',
     'embear/vim-localvimrc',
 
     -- Treesitter
