@@ -50,16 +50,11 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     'mfussenegger/nvim-lint',
 
-    -- Folding
-    'Konfekt/FastFold',
-    'tmhedberg/SimpylFold',
-
     -- Git
     'tpope/vim-fugitive',
     'lewis6991/gitsigns.nvim',
 
     -- Django / Ruby / YAML
-    'vim-scripts/django.vim',
     'vim-ruby/vim-ruby',
     'tpope/vim-rails',
     { 'tpope/vim-rbenv', ft = 'ruby' },
@@ -68,7 +63,6 @@ require('lazy').setup({
 
     -- Misc utilities
     'mbbill/undotree',
-    'vim-scripts/a.vim',
     'machakann/vim-highlightedyank',
     'mhinz/vim-startify',
     'myusuf3/numbers.vim',
