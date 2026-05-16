@@ -192,6 +192,8 @@ lua require('which-key-setup')
 lua require('gitsigns-setup')
 lua require('lualine-setup')
 lua require('finder-setup')
+lua require('persistence-setup')
+lua require('alpha-setup')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 

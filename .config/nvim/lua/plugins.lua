@@ -56,7 +56,8 @@ require('lazy').setup({
     -- Misc utilities
     'mbbill/undotree',
     'machakann/vim-highlightedyank',
-    'mhinz/vim-startify',
+    'goolord/alpha-nvim',
+    'folke/persistence.nvim',
     'myusuf3/numbers.vim',
     'bronson/vim-trailing-whitespace',
     'godlygeek/tabular',
