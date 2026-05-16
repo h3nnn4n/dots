@@ -22,6 +22,8 @@ end
 
 vim.lsp.enable(servers)
 
+require("typescript-tools").setup({})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local opts = { buffer = args.buf, silent = true }
