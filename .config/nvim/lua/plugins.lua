@@ -64,7 +64,7 @@ require('lazy').setup({
     'scrooloose/nerdcommenter',
 
     -- UI
-    'morhetz/gruvbox',
+    'ellisonleao/gruvbox.nvim',
     'scrooloose/nerdtree',
     'tpope/vim-surround',
     'easymotion/vim-easymotion',
