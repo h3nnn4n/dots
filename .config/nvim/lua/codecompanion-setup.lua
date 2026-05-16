@@ -23,8 +23,15 @@ codecompanion.setup({
     inline = { adapter = 'deepseek' },
     agent = { adapter = 'deepseek' },
   },
+  display = {
+    chat = {
+      start_in_insert_mode = true,
+    },
+  },
 })
 
-vim.keymap.set({ 'n', 'v' }, '<leader>ac', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'CodeCompanion chat' })
+vim.keymap.set('n', '<leader>ac', '<cmd>CodeCompanionChat Toggle<cr>', { desc = 'CodeCompanion chat toggle' })
+vim.keymap.set('v', '<leader>ac', '<cmd>CodeCompanionChat Add<cr>', { desc = 'CodeCompanion add selection to chat' })
+vim.keymap.set('n', '<leader>ab', '<cmd>CodeCompanionChat Add<cr>', { desc = 'CodeCompanion add buffer to chat' })
 vim.keymap.set({ 'n', 'v' }, '<leader>am', '<cmd>CodeCompanionActions<cr>', { desc = 'CodeCompanion actions' })
 vim.keymap.set({ 'n', 'v' }, '<leader>ap', ':CodeCompanion ', { desc = 'CodeCompanion inline prompt' })
