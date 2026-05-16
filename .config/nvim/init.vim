@@ -119,8 +119,6 @@ filetype plugin indent on
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
 
 " -------------------- Vim-indent --------------------
@@ -207,6 +205,7 @@ lua require('format')
 lua require('lint')
 lua require('which-key-setup')
 lua require('gitsigns-setup')
+lua require('lualine-setup')
 lua require('minuet-setup')
 lua require('codecompanion-setup')
 

@@ -84,7 +84,7 @@ require('lazy').setup({
     'easymotion/vim-easymotion',
     { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end },
     'junegunn/fzf.vim',
-    'bling/vim-airline',
+    'nvim-lualine/lualine.nvim',
     'nathanaelkane/vim-indent-guides',
     'kien/rainbow_parentheses.vim',
 
