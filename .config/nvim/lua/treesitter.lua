@@ -25,6 +25,16 @@ configs.setup({
   indent = { enable = true },
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function()
+    vim.bo.cindent = false
+    if not vim.bo.indentkeys:find('0<CR>') then
+      vim.bo.indentkeys = vim.bo.indentkeys .. ',0<CR>'
+    end
+  end,
+})
+
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldenable = false
