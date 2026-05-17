@@ -38,7 +38,7 @@ set list
 set listchars=""                  " Reset the listchars
 set listchars+=tab:▸\             " a tab should display as "▸"
 set listchars+=trail:.            " show trailing spaces as dots
-"set listchars+=space:·            " show leading space as "·"
+set listchars+=space:·            " show all spaces as "·"
 "set listchars+=eol:¬              " show end of line as "¬"
 set listchars+=extends:>          " The character to show in the last column when wrap is off and the line goes beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is off and the line goes beyond the left of the screen
