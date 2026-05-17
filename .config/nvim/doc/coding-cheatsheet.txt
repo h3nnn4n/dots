@@ -64,14 +64,19 @@ Buffergator (buffer list)                         *coding-cheatsheet-bufs*
 - :BuffergatorToggle  Toggle the panel
 
 Persistence (sessions)                            *coding-cheatsheet-sessions*
+- <leader>ss        Save named session
 - <leader>sl        Load last session for cwd
+- <leader>sL        Load named session
 - <leader>sp        Pick from saved sessions
-- <leader>sq        Stop saving for this cwd
-(sessions auto-save on :qa per directory)
+- <leader>sq        Stop auto-saving for this cwd
+- <leader>sr        Resume auto-saving for this cwd
+(sessions auto-save on :qa per directory; <leader>sq stops this)
 
 Alpha (dashboard, when nvim opens with no args)   *coding-cheatsheet-dashboard*
 - s                 Restore session for cwd
 - S                 Pick saved session
+- n                 Save named session
+- N                 Load named session
 - e                 New file
 - q                 Quit nvim
 (plus numbered shortcuts for recent files)
