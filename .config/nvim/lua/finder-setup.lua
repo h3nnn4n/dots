@@ -2,6 +2,11 @@ if vim.g.use_fzf_lua == nil then
   vim.g.use_fzf_lua = false
 end
 
+local ok_fzf, fzf_lua = pcall(require, 'fzf-lua')
+if ok_fzf then
+  fzf_lua.setup({ winopts = { width = 0.95, height = 0.95 } })
+end
+
 local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg' }
 
 local function unmap_all()
