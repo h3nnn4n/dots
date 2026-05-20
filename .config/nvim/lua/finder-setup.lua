@@ -7,7 +7,7 @@ if ok_fzf then
   fzf_lua.setup({ winopts = { width = 0.95, height = 0.95 } })
 end
 
-local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg' }
+local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg', '<leader>gs', '<leader>gu', '<leader>gt' }
 
 local function unmap_all()
   for _, lhs in ipairs(LHS) do
@@ -30,6 +30,9 @@ local function apply_fzf()
   map('<leader>L',  '<cmd>Lines<cr>',            'All lines')
   map('<leader>/',  ':Rg<Space>',                'Rg prompt', { silent = false })
   map('<leader>rg', ':Rg <C-R><C-W><CR>',        'Rg word under cursor')
+  map('<leader>gs', ":call fzf#run(fzf#wrap({'source': 'git diff --cached --name-only', 'sink': 'e'}))<cr>", 'Git staged')
+  map('<leader>gu', ":call fzf#run(fzf#wrap({'source': 'git diff --name-only', 'sink': 'e'}))<cr>", 'Git unstaged')
+  map('<leader>gt', ":call fzf#run(fzf#wrap({'source': 'git ls-files --others --exclude-standard', 'sink': 'e'}))<cr>", 'Git untracked')
 end
 
 local function apply_fzf_lua()
@@ -40,6 +43,9 @@ local function apply_fzf_lua()
   map('<leader>L',  '<cmd>FzfLua lines<cr>',      'All lines (fzf-lua)')
   map('<leader>/',  '<cmd>FzfLua live_grep<cr>',  'Live grep (fzf-lua)')
   map('<leader>rg', '<cmd>FzfLua grep_cword<cr>', 'Rg word under cursor (fzf-lua)')
+  map('<leader>gs', "<cmd>lua require('fzf-lua').fzf_exec('git diff --cached --name-only', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git staged (fzf-lua)')
+  map('<leader>gu', "<cmd>lua require('fzf-lua').fzf_exec('git diff --name-only', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git unstaged (fzf-lua)')
+  map('<leader>gt', "<cmd>lua require('fzf-lua').fzf_exec('git ls-files --others --exclude-standard', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git untracked (fzf-lua)')
 end
 
 local function activate()
