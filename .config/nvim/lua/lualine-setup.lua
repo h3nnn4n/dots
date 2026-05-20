@@ -8,6 +8,9 @@ lualine.setup({
     component_separators = { left = '', right = '' },
     globalstatus = true,
   },
+  sections = {
+    lualine_c = { { 'filename', path = 1 } },
+  },
   tabline = {
     lualine_a = { 'buffers' },
     lualine_z = { 'tabs' },
