@@ -7,7 +7,7 @@ if ok_fzf then
   fzf_lua.setup({ winopts = { fullscreen = true, preview = { layout = 'vertical' } } })
 end
 
-local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg', '<leader>gs', '<leader>gu', '<leader>gt' }
+local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg', '<leader>gs', '<leader>gu', '<leader>gt', '<leader>gc' }
 
 local function unmap_all()
   for _, lhs in ipairs(LHS) do
@@ -33,6 +33,7 @@ local function apply_fzf()
   map('<leader>gs', ":call fzf#run(fzf#wrap({'source': 'git diff --cached --name-only', 'sink': 'e'}))<cr>", 'Git staged')
   map('<leader>gu', ":call fzf#run(fzf#wrap({'source': 'git diff --name-only', 'sink': 'e'}))<cr>", 'Git unstaged')
   map('<leader>gt', ":call fzf#run(fzf#wrap({'source': 'git ls-files --others --exclude-standard', 'sink': 'e'}))<cr>", 'Git untracked')
+  map('<leader>gc', '<cmd>GFiles?<cr>', 'Git changes (all uncommitted)')
 end
 
 local function apply_fzf_lua()
@@ -46,6 +47,7 @@ local function apply_fzf_lua()
   map('<leader>gs', "<cmd>lua require('fzf-lua').fzf_exec('git diff --cached --name-only', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git staged (fzf-lua)')
   map('<leader>gu', "<cmd>lua require('fzf-lua').fzf_exec('git diff --name-only', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git unstaged (fzf-lua)')
   map('<leader>gt', "<cmd>lua require('fzf-lua').fzf_exec('git ls-files --others --exclude-standard', { actions = { ['default'] = require('fzf-lua').actions.file_edit } })<cr>", 'Git untracked (fzf-lua)')
+  map('<leader>gc', '<cmd>FzfLua git_status<cr>', 'Git changes (fzf-lua)')
 end
 
 local function activate()
