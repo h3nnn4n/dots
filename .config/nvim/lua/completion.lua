@@ -3,26 +3,14 @@ if not ok then return end
 
 blink.setup({
   keymap = {
-    preset = 'default',
-    ['<Tab>'] = { 'select_and_accept', 'fallback' },
+    preset = 'super-tab',
+    ['<C-y>'] = { 'select_and_accept' },
   },
   appearance = {
     use_nvim_cmp_as_default = true,
   },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer', 'minuet' },
-    transform_items = function(_, items)
-      local seen = {}
-      local deduped = {}
-      for _, item in ipairs(items) do
-        local key = item.insertText or item.label
-        if key and not seen[key] then
-          seen[key] = true
-          table.insert(deduped, item)
-        end
-      end
-      return deduped
-    end,
     providers = {
       minuet = {
         name = 'minuet',
