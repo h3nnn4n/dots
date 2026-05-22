@@ -4,7 +4,7 @@ end
 
 local ok_fzf, fzf_lua = pcall(require, 'fzf-lua')
 if ok_fzf then
-  fzf_lua.setup({ winopts = { width = 0.95, height = 0.95 } })
+  fzf_lua.setup({ winopts = { fullscreen = true } })
 end
 
 local LHS = { '<leader>f', '<leader>F', '<leader>l', '<leader>L', '<leader>/', '<leader>rg', '<leader>gs', '<leader>gu', '<leader>gt' }
