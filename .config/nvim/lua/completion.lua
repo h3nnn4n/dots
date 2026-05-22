@@ -2,7 +2,10 @@ local ok, blink = pcall(require, 'blink.cmp')
 if not ok then return end
 
 blink.setup({
-  keymap = { preset = 'default' },
+  keymap = {
+    preset = 'super-tab',
+    ['<C-y>'] = { 'select_and_accept' },
+  },
   appearance = {
     use_nvim_cmp_as_default = true,
   },
