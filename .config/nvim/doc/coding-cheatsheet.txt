@@ -17,7 +17,9 @@ LSP                                               *coding-cheatsheet-lsp*
 - K                 Hover docs (or diagnostic if on one)
 - <leader>rn        Rename symbol across project
 - <leader>la        Code action menu
+- <leader>e         Show diagnostic float on current line
 - ]d / [d           Next / prev diagnostic
+- ]e / [e           Next / prev error (severity ERROR only)
 - :LspInfo          Show attached servers
 - :Mason            Open mason installer UI
 
