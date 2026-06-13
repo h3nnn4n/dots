@@ -73,7 +73,8 @@ let g:loaded_perl_provider = 0
 "set rtp+=/usr/local/opt/fzf " for osx, with homebrew
 "set rtp+=~/.fzf  " For linux, with git
 "let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.7 } }
-let g:fzf_layout = {}
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 1.0 } }
+let g:fzf_preview_window = ['down:50%', 'ctrl-/']
 
 if has('nvim') && !exists('g:fzf_layout')
   autocmd! FileType fzf

@@ -16,7 +16,9 @@ LSP                                               *coding-cheatsheet-lsp*
 - K                 Hover docs (or diagnostic if on one)
 - <leader>rn        Rename symbol across project
 - <leader>la        Code action menu
+- <leader>e         Show diagnostic float on current line
 - ]d / [d           Next / prev diagnostic
+- ]e / [e           Next / prev error (severity ERROR only)
 - :LspInfo          Show attached servers
 - :Mason            Open mason installer UI
 
@@ -36,6 +38,8 @@ Finder (fzf.vim / fzf-lua)                        *coding-cheatsheet-finder*
 - <leader>L         All lines (every buffer)
 - <leader>/         Grep prompt (or live grep)
 - <leader>rg        Grep word under cursor
+- <leader>gl        Git commits, whole repo (fzf-lua; <CR> opens diff)
+- <leader>gL        Git commits, current file (fzf-lua; <CR> opens diff)
 - :FinderFzf        Use fzf.vim backend
 - :FinderFzfLua     Use fzf-lua backend
 
