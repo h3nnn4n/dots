@@ -39,6 +39,8 @@ Finder (fzf.vim / fzf-lua)                        *coding-cheatsheet-finder*
 - <leader>L         All lines (every buffer)
 - <leader>/         Grep prompt (or live grep)
 - <leader>rg        Grep word under cursor
+- <leader>gl        Git commits, whole repo (fzf-lua; <CR> opens diff)
+- <leader>gL        Git commits, current file (fzf-lua; <CR> opens diff)
 - :FinderFzf        Use fzf.vim backend
 - :FinderFzfLua     Use fzf-lua backend
 
