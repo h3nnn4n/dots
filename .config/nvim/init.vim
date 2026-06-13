@@ -17,10 +17,9 @@ set incsearch
 set autoindent
 set expandtab
 set shiftwidth=2
+set smartindent
 set smarttab
 set softtabstop=2
-
-set clipboard+=unnamedplus
 
 set ruler
 
@@ -38,7 +37,7 @@ set list
 set listchars=""                  " Reset the listchars
 set listchars+=tab:▸\             " a tab should display as "▸"
 set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=space:·            " show all spaces as "·"
+"set listchars+=space:·            " show leading space as "·"
 "set listchars+=eol:¬              " show end of line as "¬"
 set listchars+=extends:>          " The character to show in the last column when wrap is off and the line goes beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is off and the line goes beyond the left of the screen
@@ -60,6 +59,7 @@ set timeout timeoutlen=1500
 " -------------------- Plugin setup --------------------
 lua require('plugins')
 
+set clipboard+=unnamedplus
 
 " -------------------- Providers --------------------
 let g:loaded_python_provider = 1
