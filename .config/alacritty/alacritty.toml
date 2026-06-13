@@ -8,9 +8,6 @@ size = 16.0
 family = "CaskaydiaCove Nerd Font"
 style = "Regular"
 
-[bell]
-enabled = false
-
 [window]
 decorations = "buttonless"
 
