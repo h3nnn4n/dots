@@ -3,7 +3,8 @@
                                                           *coding-cheatsheet*
 
 Blink.cmp (completion menu)                       *coding-cheatsheet-cmp*
-- <Tab> / <CR>      Accept selected suggestion
+- <C-y> / <Tab>      Accept selected suggestion
+- <CR>               Accept (also inserts newline if menu hidden)
 - <C-n> / <C-p>     Cycle items
 - <C-e>             Dismiss menu
 - <C-Space>         Trigger menu manually
