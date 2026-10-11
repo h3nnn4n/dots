@@ -25,7 +25,7 @@ require('lazy').setup({
     'embear/vim-localvimrc',
 
     -- Treesitter
-    { 'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter', branch = 'main', build = ':TSUpdate' },
     'romgrk/nvim-treesitter-context',
 
     -- Icons / filetype syntax
