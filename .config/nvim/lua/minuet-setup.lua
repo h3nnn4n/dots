@@ -24,12 +24,23 @@ local providers = {
       top_p = 0.9,
     },
   },
+  openrouter = {
+    api_key = 'OPENROUTER_API_KEY',
+    end_point = 'https://openrouter.ai/api/v1/chat/completions',
+    model = 'qwen/qwen3-coder-flash',
+    name = 'openrouter',
+    stream = true,
+    optional = {
+      max_tokens = 256,
+      top_p = 0.9,
+    },
+  },
 }
 
 minuet.setup({
   provider = 'openai_compatible',
   provider_options = {
-    openai_compatible = providers.cloud,
+    openai_compatible = providers.openrouter,
   },
 })
 
@@ -41,3 +52,10 @@ end
 
 vim.api.nvim_create_user_command('MinuetCloud', function() swap('cloud') end, {})
 vim.api.nvim_create_user_command('MinuetLocal', function() swap('local_') end, {})
+vim.api.nvim_create_user_command('MinuetOpenrouter', function() swap('openrouter') end, {})
+
+vim.api.nvim_create_user_command('MinuetModel', function()
+  local provider = minuet.config.provider
+  local opts = minuet.config.provider_options[provider]
+  vim.notify(string.format('Minuet: %s / %s', opts.name or provider, opts.model), vim.log.levels.INFO)
+end, {})
