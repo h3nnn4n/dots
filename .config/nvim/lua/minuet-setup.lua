@@ -9,7 +9,7 @@ local providers = {
     name = 'deepseek',
     stream = true,
     optional = {
-      max_tokens = 256,
+      max_tokens = 128,
       top_p = 0.9,
     },
   },
@@ -20,7 +20,7 @@ local providers = {
     name = 'lmstudio',
     stream = true,
     optional = {
-      max_tokens = 256,
+      max_tokens = 128,
       top_p = 0.9,
     },
   },
@@ -31,21 +31,78 @@ local providers = {
     name = 'openrouter',
     stream = true,
     optional = {
-      max_tokens = 256,
+      max_tokens = 128,
       top_p = 0.9,
+    },
+  },
+  deepseek_fim = {
+    api_key = 'DEEPSEEK_API_KEY',
+    end_point = 'https://api.deepseek.com/beta/completions',
+    model = 'deepseek-chat',
+    name = 'deepseek-fim',
+    stream = true,
+    optional = {
+      max_tokens = 128,
     },
   },
 }
 
+-- Which provider_options key each target lives under.
+local slots = {
+  cloud = 'openai_compatible',
+  local_ = 'openai_compatible',
+  openrouter = 'openai_compatible',
+  deepseek_fim = 'openai_fim_compatible',
+}
+
 minuet.setup({
-  provider = 'openai_compatible',
+  provider = 'openai_fim_compatible',
   provider_options = {
     openai_compatible = providers.openrouter,
+    openai_fim_compatible = providers.deepseek_fim,
+  },
+  -- Latency tuning: smaller prompt + single completion = faster round-trips.
+  context_window = 8000,
+  n_completions = 1,
+  debounce = 150,
+  throttle = 700,
+  request_timeout = 3,
+  virtualtext = {
+    auto_trigger_ft = {
+      'lua',
+      'python',
+      'ruby',
+      'rust',
+      'c',
+      'hcl',
+      'yaml',
+      'toml',
+      'bash',
+      'sh',
+      'sql',
+      'typescript',
+      'typescriptreact',
+      'javascript',
+      'javascriptreact',
+      'go',
+      'vim',
+      'markdown',
+    },
+    keymap = {
+      accept = '<A-A>',
+      accept_line = '<A-a>',
+      accept_n_lines = '<A-z>',
+      next = '<A-]>',
+      prev = '<A-[>',
+      dismiss = '<A-e>',
+    },
   },
 })
 
 local function swap(target)
-  minuet.config.provider_options.openai_compatible =
+  local slot = slots[target]
+  minuet.config.provider = slot
+  minuet.config.provider_options[slot] =
     vim.tbl_deep_extend('force', {}, providers[target])
   vim.notify('Minuet → ' .. providers[target].name, vim.log.levels.INFO)
 end
@@ -53,6 +110,7 @@ end
 vim.api.nvim_create_user_command('MinuetCloud', function() swap('cloud') end, {})
 vim.api.nvim_create_user_command('MinuetLocal', function() swap('local_') end, {})
 vim.api.nvim_create_user_command('MinuetOpenrouter', function() swap('openrouter') end, {})
+vim.api.nvim_create_user_command('MinuetDeepseekFim', function() swap('deepseek_fim') end, {})
 
 vim.api.nvim_create_user_command('MinuetModel', function()
   local provider = minuet.config.provider

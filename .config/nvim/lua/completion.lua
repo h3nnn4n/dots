@@ -1,11 +1,19 @@
 local ok, blink = pcall(require, 'blink.cmp')
 if not ok then return end
 
+local keymap = {
+  preset = 'super-tab',
+  ['<C-y>'] = { 'select_and_accept' },
+}
+
+local minuet_ok, minuet = pcall(require, 'minuet')
+if minuet_ok then
+  -- Force the minuet source to run now, regardless of typing.
+  keymap['<A-y>'] = minuet.make_blink_map()
+end
+
 blink.setup({
-  keymap = {
-    preset = 'super-tab',
-    ['<C-y>'] = { 'select_and_accept' },
-  },
+  keymap = keymap,
   appearance = {
     use_nvim_cmp_as_default = true,
   },
