@@ -67,36 +67,6 @@ minuet.setup({
   debounce = 150,
   throttle = 700,
   request_timeout = 3,
-  virtualtext = {
-    auto_trigger_ft = {
-      'lua',
-      'python',
-      'ruby',
-      'rust',
-      'c',
-      'hcl',
-      'yaml',
-      'toml',
-      'bash',
-      'sh',
-      'sql',
-      'typescript',
-      'typescriptreact',
-      'javascript',
-      'javascriptreact',
-      'go',
-      'vim',
-      'markdown',
-    },
-    keymap = {
-      accept = '<A-A>',
-      accept_line = '<A-a>',
-      accept_n_lines = '<A-z>',
-      next = '<A-]>',
-      prev = '<A-[>',
-      dismiss = '<A-e>',
-    },
-  },
 })
 
 local function swap(target)

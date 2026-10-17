@@ -33,8 +33,13 @@ blink.setup({
     trigger = { prefetch_on_insert = false },
     menu = {
       auto_show = true,
+      max_height = 20,
+      min_width = 40,
       draw = {
         treesitter = {},
+        components = {
+          label = { width = { fill = true, max = 120 } },
+        },
       },
     },
     documentation = { auto_show = false },
