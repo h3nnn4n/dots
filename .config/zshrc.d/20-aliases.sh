@@ -28,6 +28,22 @@ tns () {
   tmux attach-session -d -t "${SessionName}"
 }
 
+tnso () {
+  SessionName=$1
+  Detached=$2
+  tmux new-session -d -s "${SessionName}"                && \
+  tmux rename-window -t "${SessionName}:0" nvim          && \
+  tmux send-keys -t "${SessionName}:0" "nvim" C-m        && \
+  tmux new-window -d -t "${SessionName}" -n ravioli      && \
+  tmux new-window -d -t "${SessionName}" -n fettuccine   && \
+  tmux new-window -d -t "${SessionName}" -n opencode     && \
+  tmux send-keys -t "${SessionName}:opencode" "opencode" C-m
+
+  if [[ "$Detached" != "-d" && "$Detached" != "--detached" ]]; then
+    tmux attach-session -d -t "${SessionName}"
+  fi
+}
+
 tnsc () {
   SessionName=$1
   Detached=$2
