@@ -54,3 +54,4 @@ GIT_COMMIT_MSG="latest $(date)"
 LOAD_END=$(current_time)
 ((LOAD_TIME=$LOAD_END - $LOAD_START))
 export LOAD_TIME
+export PATH=/opt/homebrew/opt/ffmpeg-full/bin:$PATH
