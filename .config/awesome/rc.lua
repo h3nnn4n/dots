@@ -51,6 +51,32 @@ end
 beautiful.init("/home/h3nnn4n/.config/awesome/theme.lua")
 --beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "mahboy"))
 
+-- {{{ Oversized, red notifications for pi
+-- pi's notify extension sends app_name="pi" (notify-send --app-name=pi) over
+-- D-Bus. naughty 4.3 keys presets per app through dbus.config.mapping — it has
+-- no per-app rules — so map "pi" onto a big red preset here. The mapping list
+-- is applied in order, later entries overriding earlier ones, hence the
+-- critical preset last (it must win over the generic pi preset).
+local naughty_dbus = naughty.dbus or require("naughty.dbus")
+local pi_notification = {
+    font         = "sans bold 22",
+    width        = dpi(560),
+    max_width    = dpi(560),
+    bg           = "#5a0000",
+    fg           = "#ffffff",
+    border_width = dpi(4),
+    border_color = "#ff3b30",
+    timeout      = 10,
+}
+local pi_notification_critical = {
+    bg           = "#d00000",
+    border_color = "#ffb0b0",
+    timeout      = 0,
+}
+naughty_dbus.config.mapping[#naughty_dbus.config.mapping + 1] = { { appname = "pi" }, pi_notification }
+naughty_dbus.config.mapping[#naughty_dbus.config.mapping + 1] = { { appname = "pi", urgency = "\2" }, pi_notification_critical }
+-- }}}
+
 -- This is used later as the default terminal and editor to run.
 --terminal = "urxvt"
 --terminal = "kitty"
