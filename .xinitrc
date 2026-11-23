@@ -21,4 +21,6 @@
 
 #( sleep 1.0 && ibus-daemon -drx ) &
 
+xset r rate 200 60
+
 exec awesome

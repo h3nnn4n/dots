@@ -1,3 +1,5 @@
+local ok, _ = pcall(require, 'secrets')
+
 local ok, codecompanion = pcall(require, 'codecompanion')
 if not ok then return end
 

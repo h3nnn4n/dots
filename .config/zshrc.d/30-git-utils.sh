@@ -22,12 +22,6 @@ function gb() {
   gbb | xargs git checkout
 }
 
-function gt() {
-  is_in_git_repo &&
-    git tag --sort -version:refname |
-    fzf --height 40% --multi
-}
-
 function gl() {
   is_in_git_repo &&
     git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph |

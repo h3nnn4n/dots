@@ -25,7 +25,7 @@ require('lazy').setup({
     'embear/vim-localvimrc',
 
     -- Treesitter
-    { 'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter', branch = 'main', build = ':TSUpdate' },
     'romgrk/nvim-treesitter-context',
 
     -- Icons / filetype syntax
@@ -88,6 +88,19 @@ require('lazy').setup({
     'nvim-lua/plenary.nvim',
     'milanglacier/minuet-ai.nvim',
     'olimorris/codecompanion.nvim',
-    'MeanderingProgrammer/render-markdown.nvim',
+
+    -- Markdown rendered view. Off by default, <leader>mr toggles it for the buffer.
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = { enabled = false },
+      keys = {
+        {
+          '<leader>mr',
+          '<cmd>RenderMarkdown buf_toggle<CR>',
+          ft = 'markdown',
+          desc = 'Toggle markdown render',
+        },
+      },
+    },
   },
 })

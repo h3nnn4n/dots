@@ -1,0 +1,9 @@
+[font]
+size = 14.0
+
+[window]
+decorations = "buttonless"
+
+[window.dimensions]
+columns = 160
+lines = 50
